@@ -41,10 +41,17 @@ export const Laptopslice = createSlice({
   initialState,
   reducers: {
     addtocart: (state, action) => {
-      return {
-        ...state,
-        cart: [...state.cart, action.payload], // Add the payload to the cart array
-      };
+      const newItem = action.payload;
+      const existingItemIndex = state.cart.findIndex(item => item._id === newItem._id);
+      if(existingItemIndex !== -1){
+        state.cart[existingItemIndex].quantity += newItem.quantity;
+        state.cart[existingItemIndex].totalPrice = state.cart[existingItemIndex].price * state.cart[existingItemIndex].quantity;
+      }else {
+        // If the item doesn't exist in the cart, add it with quantity 1 and calculate total price
+        newItem.quantity = newItem.quantity;
+        newItem.totalPrice = newItem.price*newItem.quantity;
+        state.cart.push(newItem);
+      }
     },
     reset: (state, action) => {
       return { ...state, cart: [] };
@@ -103,5 +110,5 @@ export const laptopdataid = (state) => state.laptopslice.laptopdatabyid;
 export const cart = (state) => state.laptopslice.cart;
 export const category = (state) => state.laptopslice.category;
 // The function below is called a selector and returns a value based on the current state of the store.
-export const { addtocart, reset, deletecart, setcategory } = Laptopslice.actions;
+export const { addtocart, reset, deletecart, setcategory} = Laptopslice.actions;
 export default Laptopslice.reducer;
