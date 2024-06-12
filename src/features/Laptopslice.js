@@ -5,7 +5,7 @@ const initialState = {
   error: null,
   laptopData: null,
   laptopdatabyid: null,
-  cart: [],
+
   category: "",
 };
 
@@ -40,19 +40,6 @@ export const Laptopslice = createSlice({
   name: "laptopslice",
   initialState,
   reducers: {
-    addtocart: (state, action) => {
-      return {
-        ...state,
-        cart: [...state.cart, action.payload], // Add the payload to the cart array
-      };
-    },
-    reset: (state, action) => {
-      return { ...state, cart: [] };
-    },
-    deletecart: (state, action) => {
-      const index = action.payload;
-      return { ...state, cart: [...state.cart.slice(0, index), ...state.cart.slice(index + 1)] };
-    },
     setcategory: (state, action) => {
       return {
         ...state,
@@ -100,8 +87,7 @@ export const laptopdata = (state) => state.laptopslice.laptopData;
 export const laptopError = (state) => state.laptopslice.error;
 export const laptopLoading = (state) => state.laptopslice.loading;
 export const laptopdataid = (state) => state.laptopslice.laptopdatabyid;
-export const cart = (state) => state.laptopslice.cart;
 export const category = (state) => state.laptopslice.category;
 // The function below is called a selector and returns a value based on the current state of the store.
-export const { addtocart, reset, deletecart, setcategory } = Laptopslice.actions;
+export const {setcategory} = Laptopslice.actions;
 export default Laptopslice.reducer;

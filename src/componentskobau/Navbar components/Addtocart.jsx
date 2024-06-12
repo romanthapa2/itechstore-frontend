@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { cart,reset,deletecart} from "../../features/Laptopslice";
+import { cart,resetCart,deleteCart} from "../../features/cartSlice";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Navabarup from "./Navabarup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,6 +12,15 @@ const Addtocart = () => {
   // like [{name:..,price:...}]
   const selector = useSelector(cart);
   console.log(selector);
+  
+
+  
+  
+  // navigate to the checkoutpage
+  const navigate = useNavigate();
+  const handleNavigation = () => {
+    navigate("/checkoutpage")
+  };
 
 
   // store image url after mapping or fetching data from the server to imgUrls
@@ -40,25 +50,24 @@ const Addtocart = () => {
       fetchImages();
     }
   }, [selector]);
-  console.log(imgUrls);
 
 const [price,setprice]=useState(0);
 useEffect(()=>{
-  if (selector && selector.length > 0){
+  if (selector && selector.length >= 0){
     try{
-      let totalPrice = 0;
+      let totalprice = 0;
       selector.forEach((data) => {
         // removes the commas and replace by white space and trim removes the white space
-        const formattedPrice = data.price.replace(/,/g, '').trim();
+        const formattedPrice = data.totalPrice;
         // Check if data.price is a valid number before adding it to totalPrice
         // NaN fro not a number 
         if (!isNaN(formattedPrice)) {
-          totalPrice += parseInt(formattedPrice);
+          totalprice += parseInt(formattedPrice);
         } else {
           console.warn("Invalid price for item:", data.name);
         }
       });
-      setprice(totalPrice);
+      setprice(totalprice);
     }catch(error){
       console.error("Error fetching images:", error);
     }
@@ -69,12 +78,12 @@ useEffect(()=>{
   //for resetting the array in reducer 
 const dispatch=useDispatch();
 const handlereset=()=>{
-  dispatch(reset());
+  dispatch(resetCart());
 }
 
 // dispatches the action which is deleltecart
 const hanledeleteitem=(e)=>{
-  dispatch(deletecart(e))
+  dispatch(deleteCart(e))
 }
 
 
@@ -136,11 +145,11 @@ const hanledeleteitem=(e)=>{
                           <button
                             className="p-1 bg-blue-600 px-3 me-2  rounded-md"
                            >
-                            <i><FontAwesomeIcon icon={faMinus} /></i>
+                            <i ><FontAwesomeIcon icon={faMinus} /></i>
                           </button>
                           <div className="form-outline">
                             <label className="form-label" htmlFor="form1">
-                              Quantity
+                              {datas.quantity}
                             </label>
                           </div>
                           <button
@@ -151,7 +160,7 @@ const hanledeleteitem=(e)=>{
                         </div>
 
                         <p className="text-start text-md-center ml-9">
-                          <strong>R.S{datas.price}</strong>
+                          <strong>R.S{datas.totalPrice}</strong>
                         </p>
                       </div>
                     </div>
@@ -160,14 +169,6 @@ const hanledeleteitem=(e)=>{
                 ))}
 
                 {/* ends */}
-              </div>
-              <div className="card mb-4">
-                <div className="card-body">
-                  <p>
-                    <strong>Expected shipping delivery</strong>
-                  </p>
-                  <p className="mb-0">12.10.2020 - 14.10.2020</p>
-                </div>
               </div>
               <div className="card mb-4 mb-lg-0 mt-14">
                 <div className="flex flex-row">
@@ -223,7 +224,7 @@ const hanledeleteitem=(e)=>{
                     </li>
                   </ul>
 
-                  <button type="button" className="p-3 bg-blue-800 text-white rounded-md">
+                <button type="button" onClick={handleNavigation} className="p-3 bg-blue-800 text-white rounded-md">
                     Go to checkout
                   </button>
                 </div>
