@@ -12,6 +12,7 @@ import ShowLaptop from './componentskobau/body components/ShowLaptop';
 import Typeshover from './componentskobau/Navbar components/Typeshover';
 import Navbarupocurrency from './componentskobau/Navbar components/Navbarupcurrency';
 import LaptopPage from './componentskobau/body components/categorypages/LaptopPage';
+import CheckOutPage from './componentskobau/body components/checkout/check_out_page';
 function App() {
   return (
     <BrowserRouter>
@@ -29,6 +30,7 @@ function App() {
       <Route exact path='/type' element={<Typeshover/>} />
       <Route exact path='/currency' element={<Navbarupocurrency/>}/>
       <Route exact path='laptoppage' element={<LaptopPage/>}/>
+      <Route exact path='/checkoutpage' element={<CheckOutPage/>}/>
       </Routes>
       </div>
       </BrowserRouter>
