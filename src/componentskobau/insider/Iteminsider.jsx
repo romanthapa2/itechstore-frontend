@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { laptopError, laptopLoading, laptopdataid} from "../../features/Laptopslice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../Navbar components/Navbar";
 import { addToCart,cart } from "../../features/cartSlice";
 import Footer from "../footer/Footer";

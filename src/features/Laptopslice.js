@@ -89,5 +89,6 @@ export const laptopLoading = (state) => state.laptopslice.loading;
 export const laptopdataid = (state) => state.laptopslice.laptopdatabyid;
 export const category = (state) => state.laptopslice.category;
 // The function below is called a selector and returns a value based on the current state of the store.
+
 export const {setcategory} = Laptopslice.actions;
 export default Laptopslice.reducer;
