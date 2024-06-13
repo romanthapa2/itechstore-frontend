@@ -1,7 +1,7 @@
 import {configureStore,combineReducers} from '@reduxjs/toolkit';
-import Laptopslice from '../features/Laptopslice';
+import Laptopslice from './LaptopSlice';
 import { persistReducer } from 'redux-persist';
-import CartSlice from '../features/cartSlice';
+import CartSlice from './CartSlice';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 

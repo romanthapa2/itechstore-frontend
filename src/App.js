@@ -1,18 +1,18 @@
 import './App.css';
-import Home from './componentskobau/Navbar components/Home';
+import Home from './components/Navbar components/Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Types from './componentskobau/Navbar components/Types';
-import Bands from './componentskobau/Navbar components/Bands';
-import Login from './componentskobau/Navbar components/Login';
-import Addtocart from './componentskobau/Navbar components/Addtocart';
-import Signup from './componentskobau/Navbar components/Signup';
-import Admin from './componentskobau/admin/Admin';
-import Iteminsider from './componentskobau/insider/Iteminsider';
-import ShowLaptop from './componentskobau/body components/ShowLaptop';
-import Typeshover from './componentskobau/Navbar components/Typeshover';
-import Navbarupocurrency from './componentskobau/Navbar components/Navbarupcurrency';
-import LaptopPage from './componentskobau/body components/categorypages/LaptopPage';
-import CheckOutPage from './componentskobau/body components/checkout/check_out_page';
+import Types from './components/Navbar components/Types';
+import Bands from './components/Navbar components/Bands';
+import Login from './components/Navbar components/Login';
+import Addtocart from './components/Navbar components/AddToCart';
+import Signup from './components/Navbar components/Signup';
+import Admin from './components/admin/Admin';
+import Iteminsider from './components/body components/ItemInsider';
+import LaptopCard from './components/body components/LaptopCard';
+import Typeshover from './components/Navbar components/Typeshover';
+import Navbarupocurrency from './components/Navbar components/Navbarupcurrency';
+import LaptopPage from './components/body components/LaptopPage';
+import CheckOutPage from './components/body components/checkout/CheckOutPage';
 function App() {
   return (
     <BrowserRouter>
@@ -25,7 +25,7 @@ function App() {
       <Route exact path='/signup' element={<Signup/>}/>
       <Route exact path='/addtocart' element={<Addtocart/>}/>
       <Route  exact path='/admin' element={<Admin/>}/>
-      <Route exact path='/showlaptop' element={<ShowLaptop/>} />
+      <Route exact path='/LaptopCard' element={<LaptopCard/>} />
       <Route exact path='/laptopinsider' element={<Iteminsider/>} />
       <Route exact path='/type' element={<Typeshover/>} />
       <Route exact path='/currency' element={<Navbarupocurrency/>}/>

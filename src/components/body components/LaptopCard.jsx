@@ -1,11 +1,11 @@
 import React, { useState,useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { fetchlaptopbyid } from '../../features/Laptopslice';
+import { fetchlaptopbyid } from '../../reduxstore/LaptopSlice';
 import { useNavigate } from 'react-router-dom';
 
 
 // get the laptop as props from parent components
-const ShowLaptop = ({laptop}) => {
+const LaptopCard = ({laptop}) => {
   const [imageurl,setimageurl]=useState('');
   const dispatch=useDispatch();
   const navigate=useNavigate();
@@ -51,4 +51,4 @@ const handleopen=(e)=>{
   )
 }
 
-export default ShowLaptop
+export default LaptopCard

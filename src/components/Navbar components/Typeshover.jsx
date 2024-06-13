@@ -3,7 +3,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchlaptop, setcategory } from "../../features/Laptopslice";
+import { fetchlaptop, setcategory } from "../../reduxstore/LaptopSlice";
 
 const solutions = [{ name: "Laptop" }, { name: "Desktops" }, { name: "Monitors" }];
 

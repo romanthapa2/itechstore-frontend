@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ShowLaptop from "../ShowLaptop";
-import Navabarup from "../../Navbar components/Navabarup";
-import Navbar from "../../Navbar components/Navbar";
-import Footer from "../../footer/Footer";
-import Footermuni from "../../footer/Footermuni";
-import { laptopError, laptopLoading, laptopdata,category} from "../../../features/Laptopslice";
+import LaptopCard from "./LaptopCard";
+import Navabarup from "../Navbar components/NavabarUp";
+import Navbar from "../Navbar components/Navbar";
+import Footer from "../footer/Footer";
+import Footermuni from "../footer/FooterMuni";
+import { laptopError, laptopLoading, laptopdata,category} from "../../reduxstore/LaptopSlice";
 
 const LaptopPage = () => {
   // useselctor to get data from slice
@@ -36,7 +36,7 @@ const LaptopPage = () => {
           {/* loop over the filtred data up to 4  */}
           {laptopdta &&
             laptopdta.map((laptop, index) => {
-              return <ShowLaptop key={index} laptop={laptop} />;
+              return <LaptopCard key={index} laptop={laptop} />;
             })}
         </div>
       </div>

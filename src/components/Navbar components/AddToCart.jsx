@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { cart,resetCart,deleteCart} from "../../features/cartSlice";
+import { cart,resetCart,deleteCart} from "../../reduxstore/CartSlice";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import Navabarup from "./Navabarup";
+import Navabarup from "./NavabarUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus,faMinus,faHeart ,faTrash } from "@fortawesome/free-solid-svg-icons";
 

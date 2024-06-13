@@ -1,6 +1,6 @@
 import React from "react";
 import Body from "../body components/Body";
-import Navabarup from "./Navabarup";
+import Navabarup from "./NavabarUp";
 import Navbar from "./Navbar";
 const Home = () => {
   return (

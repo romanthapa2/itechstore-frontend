@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import ShowLaptop from './ShowLaptop';
+import LaptopCard from './LaptopCard';
 import { useNavigate } from 'react-router-dom';
-import { fetchlaptop,laptopError,laptopLoading,laptopdata} from '../../features/Laptopslice';
+import { fetchlaptop,laptopError,laptopLoading,laptopdata} from '../../reduxstore/LaptopSlice';
  
 const  Laptops = () => {
   // dipatch to send data from conponent to slice
@@ -45,7 +45,7 @@ if (laptperror) {
     <div className='md:grid grid-cols-4 grid-rows-1 gap-2 mt-1'>
       {/* loop over the filtred data up to 4  */}
     {laptopdta && laptopdta.slice(0,4).map((laptop,index)=>{
-      return  <ShowLaptop key={index} laptop={laptop}/>;
+      return  <LaptopCard key={index} laptop={laptop}/>;
     })}
 </div></div>
   )
