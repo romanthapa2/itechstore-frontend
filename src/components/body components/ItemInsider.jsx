@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../Navbar components/Navbar";
 import { addToCart,cart } from "../../reduxstore/CartSlice";
-import Footer from "../footer/Footer";
-import Footermuni from "../footer/FooterMuni";
+import Footer from "../footer components/Footer";
+import Footermuni from "../footer components/FooterMuni";
 
 // when some laptop is clicked this page is shown
 const Iteminsider = () => {

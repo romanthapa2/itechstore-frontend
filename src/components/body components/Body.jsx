@@ -1,8 +1,8 @@
 import React from 'react'
 import Imageslider from './ImageSlider'
 import Laptops from './Laptops'
-import Footer from '../footer/Footer'
-import Footermuni from '../footer/FooterMuni'
+import Footer from '../footer components/Footer'
+import Footermuni from '../footer components/FooterMuni'
 
 const Body = () => {
   return (

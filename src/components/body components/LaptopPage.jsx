@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import LaptopCard from "./LaptopCard";
 import Navabarup from "../Navbar components/NavabarUp";
 import Navbar from "../Navbar components/Navbar";
-import Footer from "../footer/Footer";
-import Footermuni from "../footer/FooterMuni";
+import Footer from "../footer components/Footer";
+import Footermuni from "../footer components/FooterMuni";
 import { laptopError, laptopLoading, laptopdata,category} from "../../reduxstore/LaptopSlice";
 
 const LaptopPage = () => {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { cart,resetCart,deleteCart} from "../../reduxstore/CartSlice";
+import { cart,resetCart,deleteCart, addToCart} from "../../reduxstore/CartSlice";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
-import Navabarup from "./NavabarUp";
+import Navbar from "../Navbar components/Navbar";
+import Navabarup from "../Navbar components/NavabarUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus,faMinus,faHeart ,faTrash } from "@fortawesome/free-solid-svg-icons";
 
@@ -11,13 +11,12 @@ const Addtocart = () => {
   // getting the array of laptops detail which is stored in array of reducer
   // like [{name:..,price:...}]
   const selector = useSelector(cart);
-  console.log(selector);
-  
+  const dispatch=useDispatch();
+  const navigate = useNavigate();
 
   
-  
   // navigate to the checkoutpage
-  const navigate = useNavigate();
+
   const handleNavigation = () => {
     navigate("/checkoutpage")
   };
@@ -76,7 +75,7 @@ useEffect(()=>{
 
 
   //for resetting the array in reducer 
-const dispatch=useDispatch();
+
 const handlereset=()=>{
   dispatch(resetCart());
 }
@@ -85,6 +84,13 @@ const handlereset=()=>{
 const hanledeleteitem=(e)=>{
   dispatch(deleteCart(e))
 }
+
+
+  const handleAddCart=(e)=>{
+    dispatch(addToCart({...e,quantity:1}))}
+
+  const handleMinusCart=(e)=>{
+    dispatch(addToCart({...e,quantity:-1}))}
 
 
   return (
@@ -143,6 +149,9 @@ const hanledeleteitem=(e)=>{
                         <div className="flex flex-row mb-4" style={{ maxWidth: "300px" }}>
                           ``
                           <button
+                          disabled={datas.quantity===1}
+                          onClick={()=>handleMinusCart(datas)}
+                            
                             className="p-1 bg-blue-600 px-3 me-2  rounded-md"
                            >
                             <i ><FontAwesomeIcon icon={faMinus} /></i>
@@ -154,8 +163,9 @@ const hanledeleteitem=(e)=>{
                           </div>
                           <button
                             className="p-1 bg-blue-600 px-3 ms-2  rounded-md"
+                          
                           >
-                            <i><FontAwesomeIcon icon={faPlus} /></i>
+                            <i onClick={()=>handleAddCart(datas)}><FontAwesomeIcon icon={faPlus} /></i>
                           </button>
                         </div>
 
