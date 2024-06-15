@@ -1,155 +1,187 @@
-
-
 export default function CheckOutPage() {
   return (
-    <form>
-      <div className="space-y-12">
+    <section className="bg-gray-50 dark:bg-gray-900">
+      <div className="mx-auto max-w-screen-xl px-4 py-8 lg:py-16 lg:px-6">
+        <div className="mx-auto max-w-screen-md">
+          <div className="rounded-lg bg-white shadow dark:bg-gray-800">
+            <div className="p-4 sm:p-8 lg:p-16">
+              <h2 className="mb-8 text-2xl font-bold text-gray-900 dark:text-white">
+                Checkout
+              </h2>
+              <form action="#">
+                <div className="grid gap-4 lg:gap-6">
+                  <div className="space-y-4">
+                    <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                      Contact Details
+                    </h2>
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <div>
+                        <label htmlFor="first_name" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          First Name
+                        </label>
+                        <input
+                          type="text"
+                          id="first_name"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                          placeholder="Ram"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="last_name" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          Last Name
+                        </label>
+                        <input
+                          type="text"
+                          id="last_name"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                          placeholder="Thapa"
+                          required
+                        />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                          placeholder="example@example.com"
+                          required
+                        />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label htmlFor="phone" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          Phone Number
+                        </label>
+                        <div className="relative flex">
+                          <button id="dropdown-phone-button-3" data-dropdown-toggle="dropdown-phone-3" className="flex-shrink-0 inline-flex items-center justify-center rounded-l-lg border border-gray-300 bg-gray-100 p-2.5 text-sm text-gray-900 hover:bg-gray-200 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600" type="button">
+                            <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                              <path fill="currentColor" d="M207.029 381.471l194.343-194.343c9.373-9.373 9.373-24.569 0-33.941s-24.569-9.373-33.941 0L224 297.745 80.569 153.187c-9.373-9.373-24.569-9.373-33.941 0s-9.373 24.569 0 33.941l194.343 194.343c9.373 9.373 24.569 9.373 33.941 0z"></path>
+                            </svg>
+                            +977
+                          </button>
+                        
+                          <input
+                            type="tel"
+                            id="phone-input-3"
+                            className="z-0 rounded-e-lg border border-l-0 border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                            placeholder="9812363849"
+                            required
+                          />
+                        </div>
+                      </div>
 
-        <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
-          <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
-
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div className="sm:col-span-3">
-              <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
-                First name
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-3">
-              <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
-                Last name
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="last-name"
-                  id="last-name"
-                  autoComplete="family-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-4">
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                Email address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-3">
-              <label htmlFor="country" className="block text-sm font-medium leading-6 text-gray-900">
-                Country
-              </label>
-              <div className="mt-2">
-                <select
-                  id="country"
-                  name="country"
-                  autoComplete="country-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                >
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="col-span-full">
-              <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-900">
-                Street address
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="street-address"
-                  id="street-address"
-                  autoComplete="street-address"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-2 sm:col-start-1">
-              <label htmlFor="city" className="block text-sm font-medium leading-6 text-gray-900">
-                City
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="city"
-                  id="city"
-                  autoComplete="address-level2"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-2">
-              <label htmlFor="region" className="block text-sm font-medium leading-6 text-gray-900">
-                State / Province
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="region"
-                  id="region"
-                  autoComplete="address-level1"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-2">
-              <label htmlFor="postal-code" className="block text-sm font-medium leading-6 text-gray-900">
-                ZIP / Postal code
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="postal-code"
-                  id="postal-code"
-                  autoComplete="postal-code"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
+                      <div>
+                        <label htmlFor="province" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          Province
+                        </label>
+                        <input
+                          type="text"
+                          id="province"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                          placeholder="Province"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="city" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          City
+                        </label>
+                        <input
+                          type="text"
+                          id="city"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                          placeholder="City"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="place" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          Place
+                        </label>
+                        <input
+                          type="text"
+                          id="place"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                          placeholder="Place"
+                          required
+                        />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label htmlFor="new_address" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          Add New Address
+                        </label>
+                        <input
+                          type="text"
+                          id="new_address"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                          placeholder="New Address"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div className="space-y-4">
+                    <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                      Payment Method
+                    </h2>
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <div className="flex items-center">
+                        <input
+                          type="radio"
+                          id="credit_card"
+                          name="payment_method"
+                          className="form-radio h-4 w-4 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-800"
+                        />
+                        <label htmlFor="credit_card" className="ml-3 block text-sm font-medium text-gray-900 dark:text-white">
+                          Credit Card
+                        </label>
+                      </div>
+                      <div className="flex items-center">
+                        <input
+                          type="radio"
+                          id="paypal"
+                          name="payment_method"
+                          className="form-radio h-4 w-4 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-800"
+                        />
+                        <label htmlFor="paypal" className="ml-3 block text-sm font-medium text-gray-900 dark:text-white">
+                          PayPal
+                        </label>
+                      </div>
+                      <div className="flex items-center">
+                        <input
+                          type="radio"
+                          id="cash_on_delivery"
+                          name="payment_method"
+                          className="form-radio h-4 w-4 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-800"
+                        />
+                        <label htmlFor="cash_on_delivery" className="ml-3 block text-sm font-medium text-gray-900 dark:text-white">
+                          Cash on Delivery
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div className="flex items-center justify-between">
+                    <button
+                      type="submit"
+                      className="w-full rounded-lg bg-green-600 px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600 dark:focus:ring-primary-800"
+                    >
+                      Place Order
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-
-       
-      {/*  */}
       </div>
-
-      <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Save
-        </button>
-      </div>
-    </form>
-  )
+    </section>
+  );
+  
+  
+  
 }
