@@ -8,17 +8,18 @@ const  Laptops = () => {
   // dipatch to send data from conponent to slice
 const dispatch=useDispatch();
 // useselctor to get data from slice
-const  laptoploadings=useSelector(laptopLoading);
-const laptperror=useSelector(laptopError)
+const  laptopLoadingStatus=useSelector(laptopLoading);
+const laptopErrorStatus=useSelector(laptopError)
 // get the filtered data i.e laptop from slice
-const laptopdta=useSelector(laptopdata)
+const laptopData=useSelector(laptopdata)
+console.log(laptopData)
 
 
 
 useEffect(()=>{
   // useeffect to the fetch, only load when dispatch has changed
   dispatch(fetchlaptop('Laptop'));
-},[])
+},[dispatch])
 
 // veiwall
 const navigate=useNavigate();
@@ -26,12 +27,12 @@ const viewall=()=>{
   navigate('./laptoppage')
 }
 
-if (laptoploadings) {
+if (laptopLoadingStatus) {
   return <div>Loading...</div>;
 }
 
-if (laptperror) {
-  return <div>Error: {laptperror}</div>;
+if (laptopErrorStatus) {
+  return <div>Error: {laptopErrorStatus}</div>;
 }
 
 
@@ -44,7 +45,7 @@ if (laptperror) {
 
     <div className='md:grid grid-cols-4 grid-rows-1 gap-2 mt-1'>
       {/* loop over the filtred data up to 4  */}
-    {laptopdta && laptopdta.slice(0,4).map((laptop,index)=>{
+    {Array.isArray(laptopData) && laptopData.slice(0,4).map((laptop,index)=>{
       return  <LaptopCard key={index} laptop={laptop}/>;
     })}
 </div></div>

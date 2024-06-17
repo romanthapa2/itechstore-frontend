@@ -5,7 +5,6 @@ const initialState = {
   error: null,
   laptopData: null,
   laptopdatabyid: null,
-
   category: "",
 };
 
@@ -15,15 +14,17 @@ export const fetchlaptop = createAsyncThunk("get/fetchfilteredlaptop", async (ty
   try {
     let response;
     if ((type === "Laptop" || type === "Desktop" || type === "Monitors")) {
-      response = await fetch(`http://localhost:5000/api/admin/filtered-data?type=${type}`);
+      response = await fetch(`http://localhost:5000/filter/filter?type=${type}`);
     } else {
-      response = await fetch(`http://localhost:5000/api/admin/filtered-brand?brand=${type}`);
+      response = await fetch(`http://localhost:5000/filter/brand?brand=${type}`);
       console.log("brand api is working")
     }
     if (!response.ok) {
       throw new Error("Failed to fetch");
     }
+    console.log(response)
     return await response.json();
+    
   } catch (error) {
     console.error("Error fetching laptop data:", error);
     throw error;
@@ -32,7 +33,7 @@ export const fetchlaptop = createAsyncThunk("get/fetchfilteredlaptop", async (ty
 
 // fetch the data by id
 export const fetchlaptopbyid = createAsyncThunk(`laptop/fetchlaptopbyid`, async (laptopid) => {
-  const response = await fetch(`http://localhost:5000/api/admin/laptop/${laptopid}`);
+  const response = await fetch(`http://localhost:5000/filter/laptop/${laptopid}`);
   return await response.json();
 });
 
