@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import LaptopCard from './LaptopCard';
 import { useNavigate } from 'react-router-dom';
-import { fetchlaptop,laptopError,laptopLoading,laptopdata} from '../../reduxstore/LaptopSlice';
+import { fetchlaptop,laptopError,laptopLoading,laptopdata,setcategory} from '../../reduxstore/LaptopSlice';
  
 const  Laptops = () => {
   // dipatch to send data from conponent to slice
@@ -12,17 +12,18 @@ const  laptopLoadingStatus=useSelector(laptopLoading);
 const laptopErrorStatus=useSelector(laptopError)
 // get the filtered data i.e laptop from slice
 const laptopData=useSelector(laptopdata)
-console.log(laptopData)
+const navigate=useNavigate();
 
 
 
 useEffect(()=>{
   // useeffect to the fetch, only load when dispatch has changed
   dispatch(fetchlaptop('Laptop'));
+  dispatch(setcategory('Laptop'))
 },[dispatch])
 
 // veiwall
-const navigate=useNavigate();
+
 const viewall=()=>{
   navigate('./laptoppage')
 }

@@ -13,7 +13,7 @@ export const fetchlaptop = createAsyncThunk("get/fetchfilteredlaptop", async (ty
   console.log(type)
   try {
     let response;
-    if ((type === "Laptop" || type === "Desktop" || type === "Monitors")) {
+    if ((type === "Laptop" || type==="Monitors" || type==="Desktops")) {
       response = await fetch(`http://localhost:5000/filter/filter?type=${type}`);
     } else {
       response = await fetch(`http://localhost:5000/filter/brand?brand=${type}`);
@@ -22,7 +22,6 @@ export const fetchlaptop = createAsyncThunk("get/fetchfilteredlaptop", async (ty
     if (!response.ok) {
       throw new Error("Failed to fetch");
     }
-    console.log(response)
     return await response.json();
     
   } catch (error) {

@@ -29,7 +29,7 @@ const Addtocart = () => {
   useEffect(() => {
     if (selector && selector.length > 0) {
       const fetchImages = async () => {
-        try {
+        try { 
           // promise.all fetches the images cuncurrently or say waits untill all data is fetched
           const urls = await Promise.all(selector.map(async (data) => {
             const imageUrl = `http://localhost:5000/${data.img}`;

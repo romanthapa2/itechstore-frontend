@@ -19,7 +19,6 @@ export default function Bands() {
   const navigate = useNavigate();
 
   const Handletype = (data) => {
-    console.log(data)
     dispatch(fetchlaptop(data));
     dispatch(setcategory(data))
     navigate("/LaptopPage");
