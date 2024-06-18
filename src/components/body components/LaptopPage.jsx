@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import LaptopCard from "./LaptopCard";
 import Navabarup from "../Navbar components/NavabarUp";
 import Navbar from "../Navbar components/Navbar";
@@ -8,20 +8,19 @@ import Footermuni from "../footer components/FooterMuni";
 import { laptopError, laptopLoading, laptopdata,category} from "../../reduxstore/LaptopSlice";
 
 const LaptopPage = () => {
-  // useselctor to get data from slice
-  const laptoploadings = useSelector(laptopLoading);
-  const laptperror = useSelector(laptopError);
-  // get the filtered data i.e laptop from slice
-  const laptopdta = useSelector(laptopdata);
+  const laptopLoadingStatus= useSelector(laptopLoading);
+  const laptopErrorStatus = useSelector(laptopError);
+  const laptopData = useSelector(laptopdata);
   const setcategory = useSelector(category);
+  console.log(laptopData)
 
 
-  if (laptoploadings) {
+  if (laptopLoadingStatus) {
     return <div>Loading...</div>;
   }
 
-  if (laptperror) {
-    return <div>Error: {laptperror}</div>;
+  if (laptopErrorStatus) {
+    return <div>Error: {laptopErrorStatus}</div>;
   }
   return (
     <>
@@ -34,8 +33,8 @@ const LaptopPage = () => {
 
         <div className="md:grid grid-cols-3 grid-rows-1 gap-2 mt-1">
           {/* loop over the filtred data up to 4  */}
-          {laptopdta &&
-            laptopdta.map((laptop, index) => {
+          {laptopData &&
+            laptopData.map((laptop, index) => {
               return <LaptopCard key={index} laptop={laptop} />;
             })}
         </div>

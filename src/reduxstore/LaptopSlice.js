@@ -10,10 +10,9 @@ const initialState = {
 
 // fetching the filtred data of laptop in redux using asyncthunk
 export const fetchlaptop = createAsyncThunk("get/fetchfilteredlaptop", async (type) => {
-  console.log(type)
   try {
     let response;
-    if ((type === "Laptop" || type==="Monitors" || type==="Desktops")) {
+    if ((type === "Laptop" || type==="Monitors" || type==="Desktop")) {
       response = await fetch(`http://localhost:5000/filter/filter?type=${type}`);
     } else {
       response = await fetch(`http://localhost:5000/filter/brand?brand=${type}`);

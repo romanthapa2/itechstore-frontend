@@ -7,14 +7,13 @@ import { useDispatch } from 'react-redux';
 import { fetchlaptop,setcategory } from '../../reduxstore/LaptopSlice';
 
 
-
-
 const Monitors = () => {
     const [monitors,setMonitors]=useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const dispatch= useDispatch();
+    
     useEffect(()=>{
         const fetchMonitor=async()=>{
             try{

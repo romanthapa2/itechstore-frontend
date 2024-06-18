@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars,faMagnifyingGlass,faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import Typeshover from "./Typeshover";
+import Types from "./Types";
 import Bands from "./Bands";
 
 const Navbar = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
             Home
           </Link>
           <div className="mx-4">
-          <Typeshover/>
+          <Types/>
           </div>
           <div className="mx-4">
           <Bands/>
