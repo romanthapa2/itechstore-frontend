@@ -12,7 +12,6 @@ const LaptopPage = () => {
   const laptopErrorStatus = useSelector(laptopError);
   const laptopData = useSelector(laptopdata);
   const setcategory = useSelector(category);
-  console.log(laptopData)
 
 
   if (laptopLoadingStatus) {

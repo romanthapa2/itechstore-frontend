@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { cart, resetCart, deleteCart, addToCart } from "../../reduxstore/CartSlice";
+import { cart, deleteCart, addToCart } from "../../reduxstore/CartSlice";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar components/Navbar";
 import Navabarup from "../Navbar components/NavabarUp";
@@ -76,10 +76,6 @@ const Addtocart = () => {
   }, [selector]);
 
   //for resetting the array in reducer
-
-  const handlereset = () => {
-    dispatch(resetCart());
-  };
 
   // dispatches the action which is deleltecart
   const hanledeleteitem = (e) => {
