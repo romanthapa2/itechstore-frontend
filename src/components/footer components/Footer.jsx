@@ -4,37 +4,37 @@ import { faEnvelope,faPhone } from '@fortawesome/free-solid-svg-icons'
 
 const Footer = () => {
   return (
-    <div className='bg-white h-screen text-center  mt-10 md:h-60 md:flex justify-evenly'>
-    <div className='pt-10 md:mt-10 md:pt-0' >
+    <div className='bg-white md:h-60 text-center py-6  mt-5 md:flex justify-evenly'>
+    <div className='md:pt-0' >
       <h1 className='font-semibold mb-2'>Support</h1>
       <h3>1st floor,777 building</h3>
       <h3>Sundhara,Lalitpur</h3>
       <h3>Bagmati 44600</h3>
       <h3>Nepal</h3>
-      <div className='flex flex-row'>
+      <div className='flex gap-3 justify-center flex-row'>
       <span><FontAwesomeIcon icon={faEnvelope} /></span>
-      <h3 className='ml-4'>thaparoman970@gmail.com</h3>
+      <h3 className=''>thaparoman970@gmail.com</h3>
       </div>
-      <div className='flex flex-row'>
+      <div className='flex gap-3 justify-center flex-row'>
         <span><FontAwesomeIcon icon={faPhone} /></span>
-      <h4 className='ml-10'>9806580938</h4>
+      <h4 className=''>9806580938</h4>
       </div>
       
     </div>
-    <div className='mt-5 md:mt-10'>
+    <div className='mt-10'>
         <h2 className='font-semibold mb-2'>Shop</h2>
         <h3>Laptops</h3>
         <h3>Desktops</h3>
         <h3>Apple Products</h3>
         <h3>Services</h3>
     </div>
-    <div className=' mt-5 md:mt-10'>
+    <div className=' mt-10 '>
         <h2 className='font-semibold mb-2'>Help</h2>
         <h3>Return & refound</h3>
         <h3>Privacy Policy</h3>
         <h3>Terms of service</h3>
     </div>
-    <div className='hidden md:mt-10 md:block'>
+    <div className='mt-10'>
         <h2 className='font-semibold'>About</h2>
         <h3>Blogs</h3>
         <h3>Contact Us</h3>
