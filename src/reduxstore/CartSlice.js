@@ -17,8 +17,6 @@ export const CartSlice=createSlice({
               state.cart[existingItemIndex].quantity += newItem.quantity;
               state.cart[existingItemIndex].totalPrice = state.cart[existingItemIndex].price * state.cart[existingItemIndex].quantity;
             }else {
-              // If the item doesn't exist in the cart, add it with quantity 1 and calculate total price
-              newItem.quantity = newItem.quantity;
               newItem.totalPrice = newItem.price*newItem.quantity;
               state.cart.push(newItem);
             }
