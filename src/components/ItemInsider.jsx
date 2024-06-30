@@ -5,7 +5,7 @@ import { laptopError, laptopLoading, laptopdataid} from "../reduxstore/LaptopSli
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./Navbar components/Navbar";
-import { addToCart,cart } from "../reduxstore/CartSlice";
+import { addToCart } from "../reduxstore/CartSlice";
 import Footer from "./footer components/Footer";
 import Footermuni from "./footer components/FooterMuni";
 
@@ -15,22 +15,17 @@ const Iteminsider = () => {
   const laptoploadings = useSelector(laptopLoading);
   const laptperror = useSelector(laptopError);
   const laptopdtabyid = useSelector(laptopdataid);
-  const carts=useSelector(cart);
-  console.log(carts)
 
   useEffect(() => {
     if (laptopdtabyid && laptopdtabyid.img) {
       const fetchImage = async () => {
         try {
-          // Construct image URL from backend endpoint and image path
           const imageUrl = `http://localhost:5000/${laptopdtabyid && laptopdtabyid.img}`;
-          // fetching so that we can see the image  in our show page
           const response = await fetch(imageUrl);
 
           if (!response.ok) {
             throw new Error("Failed to fetch image");
           }
-          // Set image URL if response is okay
           setimageurl(imageUrl);
         } catch (error) {
           console.error("Error fetching image:", error);
@@ -42,9 +37,6 @@ const Iteminsider = () => {
 
 
   const dispatch = useDispatch();
-  // const [id,setid]=useState(null);
-  //  function which will add items into the cart
-  // const history=useNavigate();
   const [no, setno] = useState(1);
   const handlecart = () => {
     dispatch(addToCart({...laptopdtabyid,quantity:no,totalPrice:laptopdtabyid.price}));

@@ -44,8 +44,6 @@ const Admin = () => {
       body: formDataToSend,
     });
     const json = await response.json();
-    console.log(json);
-    
     formref.current.reset();
     
   } catch (err) {

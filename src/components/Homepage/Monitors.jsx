@@ -54,7 +54,6 @@ const Monitors = () => {
     </div>
 
 <div className='md:grid grid-cols-4 grid-rows-1 gap-2 mt-1'>
-  {/* loop over the filtred data up to 4  */}
 {Array.isArray(monitors) && monitors.slice(0,4).map((monitor,index)=>{
   return  <LaptopCard key={index} laptop={monitor}/>;
 })}

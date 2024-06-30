@@ -39,7 +39,7 @@ const Imageslider = () => {
               index === current ? "active" : ""
             } transition-opacity duration-500 ease-in-out`}
             key={index}>
-            {index === current && <img src={img} alt="" className="h-5/6 rounded-2xl" />}
+            {index === current && <img src={img} alt="" className=" rounded-2xl" />}
           </div>
         );
       })}
