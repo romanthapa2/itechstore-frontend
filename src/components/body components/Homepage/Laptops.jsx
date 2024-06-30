@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import LaptopCard from './LaptopCard';
+import LaptopCard from '../Homepage/../LaptopCard'
 import { useNavigate } from 'react-router-dom';
-import { fetchlaptop,laptopError,laptopLoading,laptopdata,setcategory} from '../../reduxstore/LaptopSlice';
+import { fetchlaptop,laptopError,laptopLoading,laptopdata,setcategory} from '../../../reduxstore/LaptopSlice';
  
 const  Laptops = () => {
   // dipatch to send data from conponent to slice

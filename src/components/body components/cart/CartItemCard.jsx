@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus, faHeart, faTrash } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
-const cartItem = React.memo(({ data, index, imgUrls, handleMinusCart, handleAddCart, hanledeleteitem }) => {
+const cartItem = React.memo(({data, index, imgUrls, handleMinusCart, handleAddCart, hanledeleteitem }) => {
   return (
     <div className="mb-2 md:flex md:flex-row bg-white p-5 rounded-lg" key={index}>
       <div className=" md:mr-5">

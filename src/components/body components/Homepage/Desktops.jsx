@@ -1,10 +1,10 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import LaptopCard from "./LaptopCard";
+import LaptopCard from "../Homepage/../LaptopCard";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { fetchlaptop, setcategory } from "../../reduxstore/LaptopSlice";
+import { fetchlaptop, setcategory } from "../../../reduxstore/LaptopSlice";
 
 const Desktops = () => {
   const [desktops, setDesktops] = useState([]);

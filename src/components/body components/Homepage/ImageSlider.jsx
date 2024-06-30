@@ -4,10 +4,10 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const collection = [
   {
-    img : require("../../pictureskobau/pictures/banner_2x1.jpg")
+    img : require("../../../pictureskobau/pictures/banner_2x1.jpg")
   },
   {
-    img : require("../../pictureskobau/pictures/legion-5i-pro-g8_2x1.png")
+    img : require("../../../pictureskobau/pictures/legion-5i-pro-g8_2x1.png")
   }
 ];
 

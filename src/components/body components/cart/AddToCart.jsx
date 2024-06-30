@@ -14,13 +14,13 @@ const Addtocart = () => {
   const selector = useSelector(cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [imgUrls, setImgUrls] = useState([]);
 
   const handleNavigation = () => {
     navigate("/checkoutpage");
   };
 
   // fetch all images cuncurrently
-  const [imgUrls, setImgUrls] = useState([]);
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;
@@ -94,6 +94,7 @@ const Addtocart = () => {
           {/* cartitem */}
           {selector.map((data, index) => (
             <CartItem
+              key={index}
               data={data}
               index={index}
               imgUrls={imgUrls}
@@ -103,7 +104,6 @@ const Addtocart = () => {
             />
           ))}
         </div>
-        
 
         {/* summary of cart items */}
         <div className="md:mt-14 mx-5 md:mx-0">
