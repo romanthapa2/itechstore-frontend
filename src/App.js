@@ -1,17 +1,17 @@
 import './App.css';
-import Home from './components/body components/Homepage/Home';
+import Home from './components/Homepage/Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Bands from './components/Navbar components/Bands';
 import Login from './components/Navbar components/Login';
-import Addtocart from './components/body components/cart/AddToCart';
+import Addtocart from './components/cart/AddToCart';
 import Signup from './components/Navbar components/Signup';
 import Admin from './components/admin/Admin';
-import Iteminsider from './components/body components/ItemInsider';
-import LaptopCard from './components/body components/LaptopCard';
+import Iteminsider from './components/ItemInsider';
+import LaptopCard from './components/LaptopCard';
 import Types from './components/Navbar components/Types';
 import Navbarupocurrency from './components/Navbar components/Navbarupcurrency';
-import LaptopPage from './components/body components/LaptopPage';
-import CheckOutPage from './components/body components/checkout/CheckOutPage';
+import LaptopPage from './components/LaptopPage';
+import CheckOutPage from './components/checkout/CheckOutPage';
 function App() {
   return (
     <BrowserRouter>

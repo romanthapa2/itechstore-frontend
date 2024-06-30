@@ -1,12 +1,12 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { cart, deleteCart, addToCart } from "../../../reduxstore/CartSlice";
+import { cart, deleteCart, addToCart } from "../../reduxstore/CartSlice";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../Navbar components/Navbar";
-import Navabarup from "../../Navbar components/NavabarUp";
+import Navbar from "../Navbar components/Navbar";
+import Navabarup from "../Navbar components/NavabarUp";
 import CartItem from "./CartItemCard";
-import Footer from "../../footer components/Footer";
-import Footermuni from "../../footer components/FooterMuni";
+import Footer from "../footer components/Footer";
+import Footermuni from "../footer components/FooterMuni";
 
 const Addtocart = () => {
   // getting the array of laptops detail which is stored in array of reducer

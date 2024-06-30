@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { fetchlaptopbyid } from '../../reduxstore/LaptopSlice';
+import { fetchlaptopbyid } from '../reduxstore/LaptopSlice';
 import { useNavigate } from 'react-router-dom';
 
 
