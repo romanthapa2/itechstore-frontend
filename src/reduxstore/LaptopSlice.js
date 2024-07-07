@@ -13,9 +13,9 @@ export const fetchlaptop = createAsyncThunk("get/fetchfilteredlaptop", async (ty
   try {
     let response;
     if ((type === "Laptop" || type==="Monitors" || type==="Desktop")) {
-      response = await fetch(`http://localhost:5000/filter/filter?type=${type}`);
+      response = await fetch(`http://localhost:5000/api/filter/dataByType?type=${type}`);
     } else {
-      response = await fetch(`http://localhost:5000/filter/brand?brand=${type}`);
+      response = await fetch(`http://localhost:5000/api/filter/dataByBrand?brand=${type}`);
       console.log("brand api is working")
     }
     if (!response.ok) {
@@ -31,7 +31,7 @@ export const fetchlaptop = createAsyncThunk("get/fetchfilteredlaptop", async (ty
 
 // fetch the data by id
 export const fetchlaptopbyid = createAsyncThunk(`laptop/fetchlaptopbyid`, async (laptopid) => {
-  const response = await fetch(`http://localhost:5000/filter/laptop/${laptopid}`);
+  const response = await fetch(`http://localhost:5000/api/filter/dataById/${laptopid}`);
   return await response.json();
 });
 

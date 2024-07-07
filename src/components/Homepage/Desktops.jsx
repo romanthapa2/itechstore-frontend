@@ -16,9 +16,9 @@ const Desktops = () => {
   useEffect(() => {
     const fetchDesktop = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/filter/filter?type=Desktop`);
+        const response = await fetch(`http://localhost:5000/api/filter/dataByType?type=Desktop`);
         const data = await response.json();
-        setDesktops(data);
+        setDesktops(data.data);
       } catch (error) {
         console.error("Error fetching monitor data:", error);
         setError(error);

@@ -10,6 +10,7 @@ const  laptopLoadingStatus=useSelector(laptopLoading);
 const laptopErrorStatus=useSelector(laptopError)
 // get the filtered data i.e laptop from slice
 const laptopData=useSelector(laptopdata)
+console.log(laptopData.data)
 const navigate=useNavigate();
 
 
@@ -42,7 +43,7 @@ if (laptopErrorStatus) {
 
     <div className='md:grid grid-cols-4 grid-rows-1 gap-2 mt-1'>
       {/* loop over the filtred data up to 4  */}
-    {Array.isArray(laptopData) && laptopData.slice(0,4).map((laptop,index)=>{
+    {Array.isArray(laptopData.data) && laptopData.data.slice(0,4).map((laptop,index)=>{
       return  <LaptopCard key={index} laptop={laptop}/>;
     })}
 </div></div>

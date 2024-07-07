@@ -39,7 +39,7 @@ const Admin = () => {
     formDataToSend.append("price", fomvalue.price);
     formDataToSend.append("img", fomvalue.img);
 
-    const response = await fetch("http://localhost:5000/api/admin/upload-data", {
+    const response = await fetch("http://localhost:5000/api/admin/add-product", {
       method: "POST",
       body: formDataToSend,
     });

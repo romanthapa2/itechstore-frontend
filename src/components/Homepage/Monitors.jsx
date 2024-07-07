@@ -17,9 +17,9 @@ const Monitors = () => {
     useEffect(()=>{
         const fetchMonitor=async()=>{
             try{
-                const response=await fetch(`http://localhost:5000/filter/filter?type=Monitors`);
+                const response=await fetch(`http://localhost:5000/api/filter/dataByType?type=Monitors`);
                 const data=await response.json();
-                setMonitors(data)
+                setMonitors(data.data)
                 
             }
             catch(error){
