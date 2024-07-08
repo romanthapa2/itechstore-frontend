@@ -2,6 +2,8 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope,faPhone } from '@fortawesome/free-solid-svg-icons'
 
+
+const MemoizeFontAwesomeIcon = React.memo(FontAwesomeIcon);
 const Footer = () => {
   return (
     <div className='bg-white md:h-60 text-center py-6  mt-5 md:flex justify-evenly'>
@@ -12,11 +14,11 @@ const Footer = () => {
       <h3>Bagmati 44600</h3>
       <h3>Nepal</h3>
       <div className='flex gap-3 justify-center flex-row'>
-      <span><FontAwesomeIcon icon={faEnvelope} /></span>
+      <MemoizeFontAwesomeIcon icon={faEnvelope} />
       <h3 className=''>thaparoman970@gmail.com</h3>
       </div>
       <div className='flex gap-3 justify-center flex-row'>
-        <span><FontAwesomeIcon icon={faPhone} /></span>
+        <MemoizeFontAwesomeIcon icon={faPhone} />
       <h4 className=''>9806580938</h4>
       </div>
       

@@ -12,17 +12,16 @@ const initialState = {
 export const fetchlaptop = createAsyncThunk("get/fetchfilteredlaptop", async (type) => {
   try {
     let response;
-    if ((type === "Laptop" || type==="Monitors" || type==="Desktop")) {
+    if (type === "Laptop" || type === "Monitors" || type === "Desktop") {
       response = await fetch(`http://localhost:5000/api/filter/dataByType?type=${type}`);
     } else {
       response = await fetch(`http://localhost:5000/api/filter/dataByBrand?brand=${type}`);
-      console.log("brand api is working")
+      console.log("brand api is working");
     }
     if (!response.ok) {
       throw new Error("Failed to fetch");
     }
     return await response.json();
-    
   } catch (error) {
     console.error("Error fetching laptop data:", error);
     throw error;
@@ -31,8 +30,11 @@ export const fetchlaptop = createAsyncThunk("get/fetchfilteredlaptop", async (ty
 
 // fetch the data by id
 export const fetchlaptopbyid = createAsyncThunk(`laptop/fetchlaptopbyid`, async (laptopid) => {
+  console.log(laptopid)
   const response = await fetch(`http://localhost:5000/api/filter/dataById/${laptopid}`);
-  return await response.json();
+  const data = await response.json();
+  console.log(data)
+  return data
 });
 
 export const Laptopslice = createSlice({
@@ -89,5 +91,5 @@ export const laptopdataid = (state) => state.laptopslice.laptopdatabyid;
 export const category = (state) => state.laptopslice.category;
 // The function below is called a selector and returns a value based on the current state of the store.
 
-export const {setcategory} = Laptopslice.actions;
+export const { setcategory } = Laptopslice.actions;
 export default Laptopslice.reducer;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Loginhoi = (props) => {
+const Loginhoi = () => {
   // usenaviagate to redirect to another component
   let history = useNavigate();
   // setting the inital value as blank

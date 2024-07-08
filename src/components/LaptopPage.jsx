@@ -5,14 +5,13 @@ import Navabarup from "./Navbar components/NavabarUp";
 import Navbar from "./Navbar components/Navbar";
 import Footer from "./footer components/Footer";
 import Footermuni from "./footer components/FooterMuni";
-import { laptopError, laptopLoading, laptopdata,category} from "../reduxstore/LaptopSlice";
+import { laptopError, laptopLoading, laptopdata, category } from "../reduxstore/LaptopSlice";
 
 const LaptopPage = () => {
-  const laptopLoadingStatus= useSelector(laptopLoading);
+  const laptopLoadingStatus = useSelector(laptopLoading);
   const laptopErrorStatus = useSelector(laptopError);
   const laptopData = useSelector(laptopdata);
   const setcategory = useSelector(category);
-
 
   if (laptopLoadingStatus) {
     return <div>Loading...</div>;

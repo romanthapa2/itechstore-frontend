@@ -2,7 +2,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus, faHeart, faTrash } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
+const MemoizedFontAwesomeIcon = React.memo(FontAwesomeIcon)
 const cartItem = React.memo(({data, index, imgUrls, handleMinusCart, handleAddCart, hanledeleteitem }) => {
+  console.log(data)
+  const onMinusClick = () => handleMinusCart(data);
+  const onAddClick = () => handleAddCart(data);
+  const onDeleteClick = () => hanledeleteitem(index);
+  
   return (
     <div className="mb-2 md:flex md:flex-row bg-white p-5 rounded-lg" key={index}>
       <div className=" md:mr-5">
@@ -20,18 +26,14 @@ const cartItem = React.memo(({data, index, imgUrls, handleMinusCart, handleAddCa
           className="bg-blue-600 p-2 text-white  me-5 mb-2  rounded-md"
           data-mdb-toggle="tooltip"
           title="Remove item">
-          <i className="fas fa-trash" onClick={() => hanledeleteitem(index)}>
-            <FontAwesomeIcon icon={faTrash} />
-          </i>
+            <MemoizedFontAwesomeIcon icon={faTrash} onClick={onDeleteClick} />
         </button>
         <button
           type="button"
           className="bg-red-800 p-2 text-white mb-2  rounded-md"
           data-mdb-toggle="tooltip"
           title="Move to the wish list">
-          <i className="fas fa-heart">
-            <FontAwesomeIcon icon={faHeart} />
-          </i>
+            <MemoizedFontAwesomeIcon icon={faHeart} />
         </button>
       </div>
 
@@ -39,11 +41,9 @@ const cartItem = React.memo(({data, index, imgUrls, handleMinusCart, handleAddCa
         <div className="mb-4 flex flex-row" style={{ maxWidth: "300px" }}>
           <button
             disabled={data.quantity === 1}
-            onClick={() => handleMinusCart(data)}
+            onClick={onMinusClick}
             className="p-1 md:h-10 bg-blue-600 px-3 me-2  rounded-md">
-            <i>
-              <FontAwesomeIcon icon={faMinus} />
-            </i>
+              <MemoizedFontAwesomeIcon icon={faMinus} />
           </button>
           <div className="">
             <label className="form-label" htmlFor="form1">
@@ -51,9 +51,7 @@ const cartItem = React.memo(({data, index, imgUrls, handleMinusCart, handleAddCa
             </label>
           </div>
           <button className="p-1 md:h-10 bg-blue-600 px-3 ms-2  rounded-md">
-            <i onClick={() => handleAddCart(data)}>
-              <FontAwesomeIcon icon={faPlus} />
-            </i>
+              <MemoizedFontAwesomeIcon icon={faPlus} onClick={onAddClick}/>
           </button>
         </div>
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   let history = useNavigate();
-      // setting the inital value as blank
+  // setting the inital value as blank
   const [value, setvalue] = useState({ name: "", email: "", password: "", cpassword: "" });
   // when the submit button is clicked this function excutes and sends data to
   // the body of backend and returns the same response
@@ -23,15 +23,15 @@ const Signup = () => {
       localStorage.setItem("token", json.token);
       history("/");
     } else {
-      return <h1>error</h1>
+      return <h1>error</h1>;
     }
   };
-      // sets the value when user types in the input form
+  // sets the value when user types in the input form
   const onChange = (e) => {
     setvalue({ ...value, [e.target.name]: e.target.value });
   };
   return (
-    <div  className="h-screen flex justify-center items-center">
+    <div className="h-screen flex justify-center items-center">
       <form onSubmit={handleSubmit} className="w-60">
         <div className="flex flex-col ">
           <label htmlFor="name"> Name</label>

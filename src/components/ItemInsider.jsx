@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { laptopError, laptopLoading, laptopdataid} from "../reduxstore/LaptopSlice";
+import { laptopError, laptopLoading, laptopdataid } from "../reduxstore/LaptopSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./Navbar components/Navbar";
@@ -15,12 +15,13 @@ const Iteminsider = () => {
   const laptoploadings = useSelector(laptopLoading);
   const laptperror = useSelector(laptopError);
   const laptopdtabyid = useSelector(laptopdataid);
+  console.log(laptopdtabyid.data);
 
   useEffect(() => {
-    if (laptopdtabyid && laptopdtabyid.img) {
+    if (laptopdtabyid && laptopdtabyid.data.img) {
       const fetchImage = async () => {
         try {
-          const imageUrl = `http://localhost:5000/${laptopdtabyid && laptopdtabyid.img}`;
+          const imageUrl = `http://localhost:5000/${laptopdtabyid && laptopdtabyid.data.img}`;
           const response = await fetch(imageUrl);
 
           if (!response.ok) {
@@ -35,11 +36,10 @@ const Iteminsider = () => {
     }
   }, [laptopdtabyid]);
 
-
   const dispatch = useDispatch();
   const [no, setno] = useState(1);
   const handlecart = () => {
-    dispatch(addToCart({...laptopdtabyid,quantity:no,totalPrice:laptopdtabyid.price}));
+    dispatch(addToCart({ ...laptopdtabyid.data, quantity: no, totalPrice: laptopdtabyid.price }));
   };
 
   // toggle desc when clicked it becomes true  another click false
@@ -61,8 +61,8 @@ const Iteminsider = () => {
         <div className="bg-white  md:h-5/6 md:w-1/2 md:mr-20">
           <div className="ml-11 mr-11">
             <h5 className="mt-12 font-light text-sm">HOME / PRODUCTS / LAPTOPS / LENOVO</h5>
-            <h1 className="mt-4 text-2xl font-semibold">{laptopdtabyid && laptopdtabyid.name}</h1>
-            <h2 className="mt-4 font-serif text-xl">RS.{laptopdtabyid.price}</h2>
+            <h1 className="mt-4 text-2xl font-semibold">{laptopdtabyid && laptopdtabyid.data.name}</h1>
+            <h2 className="mt-4 font-serif text-xl">RS.{laptopdtabyid.data.price}</h2>
             <div className=" flex flex-row-1 mt-5">
               <div className="flex flex-row">
                 <button
@@ -101,7 +101,7 @@ const Iteminsider = () => {
               {desc && (
                 <div className="mr-10 mt-3">
                   {/* Render description here */}
-                  <p>{laptopdtabyid.desc}</p>
+                  <p>{laptopdtabyid.data.desc}</p>
                 </div>
               )}
               <div className="flex flex-row justify-between mr-10 mt-3 border-t-2 border-b-2 pb-2 pt-2">

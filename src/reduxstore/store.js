@@ -1,25 +1,24 @@
-import {configureStore,combineReducers} from '@reduxjs/toolkit';
-import Laptopslice from './LaptopSlice';
-import { persistReducer } from 'redux-persist';
-import CartSlice from './CartSlice';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import Laptopslice from "./LaptopSlice";
+import { persistReducer } from "redux-persist";
+import CartSlice from "./CartSlice";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 
 const persistConfig = {
-    key: 'root', // Key is required, it is used to store data in storage
-    storage, // Use the storage engine you imported
-  };
+  key: "root", // Key is required, it is used to store data in storage
+  storage, // Use the storage engine you imported
+};
 
-const reducer=combineReducers({
-    laptopslice:Laptopslice,
-    cartslice:CartSlice,
+const reducer = combineReducers({
+  laptopslice: Laptopslice,
+  cartslice: CartSlice,
 });
-const persistreducer=persistReducer(persistConfig,reducer)
+const persistreducer = persistReducer(persistConfig, reducer);
 
 export const store = configureStore({
-    reducer: persistreducer,
-    middleware:getDefaultMiddleware =>
+  reducer: persistreducer,
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),
-})
+});

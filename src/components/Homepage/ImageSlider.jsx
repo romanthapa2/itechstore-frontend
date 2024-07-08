@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
+const MemoizeFontAwesomeIcon = React.memo(FontAwesomeIcon)
+
 const collection = [
   {
     img : require("../../pictures/banner_2x1.jpg")
@@ -26,7 +28,7 @@ const Imageslider = () => {
 
   return (
     <section className=" slider flex items-center justify-center relative mt-10  ml-9 mr-9">
-      <FontAwesomeIcon
+      <MemoizeFontAwesomeIcon
         icon={faAngleLeft}
         className="left-arrow size-10 absolute left-0 md-left-7 hover:text-white"
         onClick={prevSlide}
@@ -43,7 +45,7 @@ const Imageslider = () => {
           </div>
         );
       })}
-      <FontAwesomeIcon
+      <MemoizeFontAwesomeIcon
         icon={faAngleRight}
         className="right-arrow size-10 absolute right-0 hover:text-white md-8"
         onClick={nextSlide}

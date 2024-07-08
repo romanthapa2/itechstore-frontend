@@ -13,7 +13,7 @@ export default function Types() {
 
   const Handletype = (data) => {
     dispatch(fetchlaptop(data));
-    dispatch(setcategory(data))
+    dispatch(setcategory(data));
     navigate("/LaptopPage");
   };
 

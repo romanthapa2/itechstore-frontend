@@ -11,7 +11,8 @@ import Footermuni from "../footer components/FooterMuni";
 const Addtocart = () => {
   // getting the array of laptops detail which is stored in array of reducer
   // like [{name:..,price:...}]
-  const selector = useSelector(cart);
+  const cartData = useSelector(cart);
+  console.log(cartData)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [imgUrls, setImgUrls] = useState([]);
@@ -25,11 +26,12 @@ const Addtocart = () => {
     const abortController = new AbortController();
     const signal = abortController.signal;
 
-    if (selector && selector.length > 0) {
+    if (cartData && cartData.length > 0) {
       const fetchImages = async () => {
         try {
           const urls = await Promise.all(
-            selector.map(async (data) => {
+            cartData.map(async (data) => {
+              console.log(data.img)
               const imageUrl = `http://localhost:5000/${data.img}`;
               const response = await fetch(imageUrl, { signal });
               if (!response.ok) {
@@ -48,12 +50,13 @@ const Addtocart = () => {
     return () => {
       abortController.abort();
     };
-  }, [selector]);
+  }, [cartData]);
 
   // calculate total price of all items in the cart
   const totalPrice = useMemo(() => {
     let totalprice = 0;
-    selector.forEach((data) => {
+    cartData.forEach((data) => {
+      // console.log(data.data.totalPrice)
       const formattedPrice = data.totalPrice;
       if (!isNaN(formattedPrice)) {
         totalprice += parseInt(formattedPrice);
@@ -62,7 +65,7 @@ const Addtocart = () => {
       }
     });
     return totalprice;
-  }, [selector]);
+  }, [cartData]);
 
   const [price, setprice] = useState(0);
   useEffect(() => {
@@ -89,10 +92,10 @@ const Addtocart = () => {
       <div className="h-fit py-5 flex flex-col md:flex-row justify-center gap-6 my-3">
         <div className="m-5 md:mb-4">
           <div className="py-3">
-            <h5 className="ml-1 md:ml-0 text-2xl font-semibold">Cart Quantity {selector.length}</h5>
+            <h5 className="ml-1 md:ml-0 text-2xl font-semibold">Cart Quantity {cartData.length}</h5>
           </div>
           {/* cartitem */}
-          {selector.map((data, index) => (
+          {cartData.map((data, index) => (
             <CartItem
               key={index}
               data={data}
