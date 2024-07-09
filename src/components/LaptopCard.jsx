@@ -14,7 +14,6 @@ const LaptopCard = ({ laptop }) => {
       try {
         // Construct image URL from backend endpoint and image path
         const imageurl = `http://localhost:5000/${laptop.img}`;
-        // fetching so that we can see the image  in our show page
         const response = await fetch(imageurl);
 
         if (!response.ok) {

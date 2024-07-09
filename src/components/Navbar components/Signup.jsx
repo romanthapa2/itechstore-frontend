@@ -3,10 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   let history = useNavigate();
-  // setting the inital value as blank
   const [value, setvalue] = useState({ name: "", email: "", password: "", cpassword: "" });
-  // when the submit button is clicked this function excutes and sends data to
-  // the body of backend and returns the same response
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password } = value;
@@ -26,7 +23,8 @@ const Signup = () => {
       return <h1>error</h1>;
     }
   };
-  // sets the value when user types in the input form
+
+  
   const onChange = (e) => {
     setvalue({ ...value, [e.target.name]: e.target.value });
   };

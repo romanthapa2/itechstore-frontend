@@ -2,12 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Loginhoi = () => {
-  // usenaviagate to redirect to another component
   let history = useNavigate();
-  // setting the inital value as blank
   const [value, setvalue] = useState({ email: "", password: "" });
-  // when the submit button is clicked this function excutes and sends data to
-  // the body of backend and returns the same response
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/api/user/login", {

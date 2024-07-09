@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus, faHeart, faTrash } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
+
+// carts ko item card
 const MemoizedFontAwesomeIcon = React.memo(FontAwesomeIcon)
 const cartItem = React.memo(({data, index, imgUrls, handleMinusCart, handleAddCart, hanledeleteitem }) => {
   console.log(data)
@@ -10,12 +12,12 @@ const cartItem = React.memo(({data, index, imgUrls, handleMinusCart, handleAddCa
   const onDeleteClick = () => hanledeleteitem(index);
   
   return (
-    <div className="mb-2 md:flex md:flex-row bg-white p-5 rounded-lg" key={index}>
+    <div className="mb-2 md:flex md:flex-row bg-white md:h-64 p-5 rounded-lg" key={index}>
       <div className=" md:mr-5">
-        {imgUrls[index] && <img src={imgUrls[index]} className="w-72" alt="Blue Jeans Jacket" />}
+        {imgUrls[index] && <img src={imgUrls[index]} className="w-72 size-56" alt="Blue Jeans Jacket" />}
       </div>
 
-      <div className="mb-4 mr-10 text-xl">
+      <div className="mb-4 mr-10 text-xl w-72">
         <p className="mb-2">
           <strong>{data.name}</strong>
         </p>
@@ -37,7 +39,7 @@ const cartItem = React.memo(({data, index, imgUrls, handleMinusCart, handleAddCa
         </button>
       </div>
 
-      <div className="flex flex-row  mb-4 mr-10">
+      <div className="flex flex-row  mb-4 mr-3">
         <div className="mb-4 flex flex-row" style={{ maxWidth: "300px" }}>
           <button
             disabled={data.quantity === 1}
