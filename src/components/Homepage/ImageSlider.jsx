@@ -18,24 +18,33 @@ const HeroData = [
   {
     id: 2,
     img: Image2,
-    subtitle: "Fast",
-    title: "Apple",
-    title2: "M2 Chip",
-  },
-  {
-    id: 3,
-    img: Image4,
-    // subtitle: "Offer",
-    title: "Only R.s 2,00,000",
-    title2: "Offer",
+    subtitle: "Apple",
+    title: "Branded",
+    title2: "Laptops",
   },
 
 ];
 
 const Imageslider = () => {
+  const CustomPrevArrow = (props) => (
+    <button
+      {...props}
+      className="slick-arrow slick-prev"
+      style={{ ...props.style, left: "0px", zIndex: 1  }}
+    />
+  );
+
+  const CustomNextArrow = (props) => (
+    <button
+      {...props}
+      className="slick-arrow slick-next"
+      style={{ ...props.style, right: "0px", zIndex: 1 }}
+    />
+  );
+
   const settings = {
-    dots: true,
-    arrows: false,
+    dots: false,
+    arrows: true,
     infinite: true,
     speed: 800,
     slidesToScroll: 1,
@@ -44,14 +53,17 @@ const Imageslider = () => {
     cssEase: "ease-in-out",
     pauseOnHover: false,
     pauseOnFocus: true,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
   };
+
   return (
-    <div className="m-16">
+    <div className="mx-10 md:mx-16  my-10">
       <div
-        className="overflow-hidden rounded-3xl min-h-[450px] sm:min-h-[650px] bg-black flex justify-center items-center
+        className="overflow-hidden rounded-3xl h-[490px] bg-gray-400 flex justify-center items-center
 "
       >
-        <div className="container pb-8 sm:pb-0">
+        <div className="container px-5">
           {/* Hero section */}
           <Slider {...settings}>
             {HeroData.map((data) => (

@@ -11,7 +11,7 @@ const Navabarup = () => {
   };
 
   return (
-    <div className="flex h-8 items-center justify-between bg-black">
+    <div className="flex h-8 px-8 items-center justify-between bg-black">
       <div className="ml-10">
         <Navbarupocurrency />
       </div>

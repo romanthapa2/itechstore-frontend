@@ -44,7 +44,7 @@ const Desktops = () => {
   };
 
   return (
-    <div className="ml-10 mt-10 h-">
+    <div className="mx-10 md:pl-4 mt-10">
       <div className="flex justify-between">
         <h3 className="font-semibold text-xl">Desktops</h3>
         <h3 className="mr-12  hover:underline text-blue-800" onClick={viewall}>
@@ -52,7 +52,7 @@ const Desktops = () => {
         </h3>
       </div>
 
-      <div className="md:grid grid-cols-4 grid-rows-1 gap-2 mt-1">
+      <div className="md:grid grid-cols-4 grid-rows-1 gap-3 mt-1">
         {/* loop over the filtred data up to 4  */}
         {Array.isArray(desktops) &&
           desktops.slice(0, 4).map((desktop, index) => {

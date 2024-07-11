@@ -9,7 +9,7 @@ const MemoizeFontAwesomeIcon = React.memo(FontAwesomeIcon);
 
 const Navbar = () => {
   return (
-    <header className="flex justify-between bg-white h-14 items-center">
+    <header className="flex px-8 justify-between bg-white h-14 items-center">
       {/* bar icon and topic of the shop */}
       <MemoizeFontAwesomeIcon icon={faBars} className="text-2xl ml-5 md:hidden" />
       <div>
