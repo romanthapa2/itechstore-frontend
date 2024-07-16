@@ -44,7 +44,7 @@ const Desktops = () => {
   };
 
   return (
-    <div className="mx-10 md:pl-4 mt-10">
+    <div className="mx-6 md:mx-10 md:pl-4 mt-10">
       <div className="flex justify-between">
         <h3 className="font-semibold text-xl">Desktops</h3>
         <h3 className="mr-12  hover:underline text-blue-800" onClick={viewall}>

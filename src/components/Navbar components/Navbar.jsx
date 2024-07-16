@@ -37,7 +37,7 @@ const Navbar = () => {
         <Link to="/addtocart">
           <MemoizeFontAwesomeIcon icon={faCartPlus} className="mr-6" />
         </Link>
-        <Link to="/admin">admin</Link>
+        {/* <Link to="/admin">admin</Link> */}
       </div>
     </header>
   );

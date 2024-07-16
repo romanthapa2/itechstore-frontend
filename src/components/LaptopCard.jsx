@@ -37,11 +37,11 @@ const LaptopCard = ({ laptop }) => {
   };
 
   return (
-    <div className="flex flex-col mt-4 bg-white h-fit w-72 p-5 rounded-xl" onClick={handleopen}>
+    <div className="flex flex-col mt-4 bg-white h-[95%] w-full px-5 py-9 rounded-xl" onClick={handleopen}>
       <div>
         <img className="h-52 rounded-xl" src={imageurl} alt={laptop.name} />
       </div>
-      <div className="mt-6">
+      <div className="mt-14">
         <h2>{laptop.name}</h2>
         <h2 className="font-semibold">RS.{laptop.price}</h2>
       </div>
