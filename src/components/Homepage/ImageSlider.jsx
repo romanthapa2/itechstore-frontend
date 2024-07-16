@@ -4,7 +4,6 @@ import React from "react";
 import Slider from "react-slick";
 import Image1 from "../../pictures/61insmaQR-S._AC_SL1500_-removebg.png";
 import Image2 from "../../pictures/macbook.png";
-import Image4 from "../../pictures/images__2_-removebg-preview.png"
 // import Button from "../../utils/Button";
 
 const HeroData = [

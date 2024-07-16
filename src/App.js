@@ -15,7 +15,7 @@ import CheckOutPage from "./components/checkout/CheckOutPage";
 function App() {
   return (
     <BrowserRouter>
-      <div className="bg-slate-100">
+      <div className="bg-slate-200">
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/types" element={<Types />} />

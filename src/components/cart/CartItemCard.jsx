@@ -6,10 +6,10 @@ import React from "react";
 // carts ko item card
 const MemoizedFontAwesomeIcon = React.memo(FontAwesomeIcon)
 const cartItem = React.memo(({data, index, imgUrls, handleMinusCart, handleAddCart, hanledeleteitem }) => {
-  console.log(data)
   const onMinusClick = () => handleMinusCart(data);
   const onAddClick = () => handleAddCart(data);
   const onDeleteClick = () => hanledeleteitem(index);
+  console.log(`app rendered 2 ${Math.random()}`)
   
   return (
     <div className="mb-2 md:flex md:flex-row bg-white md:h-64 p-5 rounded-lg" key={index}>

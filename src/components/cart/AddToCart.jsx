@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState,useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { cart, deleteCart, addToCart } from "../../reduxstore/CartSlice";
 import { useNavigate } from "react-router-dom";
@@ -7,8 +7,10 @@ import Navabarup from "../Navbar components/NavabarUp";
 import CartItem from "./CartItemCard";
 import Footer from "../footer components/Footer";
 import Footermuni from "../footer components/FooterMuni";
+import cartItem from "./CartItemCard";
 
 const Addtocart = () => {
+  console.log(`app rendered ${Math.random()}`)
   // getting the array of laptops detail which is stored in array of reducer
   // like [{name:..,price:...}]
   const cartData = useSelector(cart);
@@ -17,9 +19,9 @@ const Addtocart = () => {
   const navigate = useNavigate();
   const [imgUrls, setImgUrls] = useState([]);
 
-  const handleNavigation = () => {
+  const handleNavigation = useCallback(() => {
     navigate("/checkoutpage");
-  };
+  },[navigate]);
 
   // fetch all images cuncurrently
   useEffect(() => {
@@ -50,8 +52,10 @@ const Addtocart = () => {
     return () => {
       abortController.abort();
     };
-  }, [cartData]);
+  }, [cartItem]);
 
+
+  const [price, setprice] = useState(0);
   // calculate total price of all items in the cart
   const totalPrice = useMemo(() => {
     let totalprice = 0;
@@ -64,13 +68,9 @@ const Addtocart = () => {
         console.warn("Invalid price for item:", data.name);
       }
     });
-    return totalprice;
+    setprice(totalprice);
   }, [cartData]);
 
-  const [price, setprice] = useState(0);
-  useEffect(() => {
-    setprice(totalPrice);
-  }, [totalPrice]);
 
   // dispatches the actions to the cartarray
   const hanledeleteitem = (e) => {

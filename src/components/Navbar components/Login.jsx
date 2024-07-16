@@ -29,35 +29,32 @@ const Loginhoi = () => {
   };
   return (
     <div className="h-screen flex justify-center items-center">
-      <form className=" w-60" onSubmit={handleSubmit}>
-        <div className="flex flex-col ">
-          <label htmlFor="exampleInputEmail1">Email address</label>
+      <div className="h-[55%] w-[25%] bg-white rounded-md flex flex-col justify-center items-center">
+      <h1 className="text-3xl mb-6">SIGN IN</h1>
+      <form className=" w-60 space-y-3" onSubmit={handleSubmit}>
+        <div className="flex flex-col border ">
           <input
             name="email"
             type="email"
-            className="form-control p-1"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
+            className=" p-2"
+            placeholder="Email"
             onChange={onChange}
           />
         </div>
-        <div className="flex flex-col ">
-          <label htmlFor="exampleInputPassword1">Password</label>
+        <div className="flex flex-col border ">
           <input
             name="password"
             type="password"
-            className="form-control p-1"
-            id="exampleInputPassword1"
+            className=" p-2"
             placeholder="Password"
             onChange={onChange}
           />
         </div>
-        <button type="submit" className="p-1 bg-orange-300 rounded-lg mt-3 ml-20">
-          Submit
+        <button type="submit" className="p-2 w-24 text-white bg-black rounded-lg ml-12">
+          SIGN IN 
         </button>
       </form>
-
+      </div>
     </div>
   );
 };
