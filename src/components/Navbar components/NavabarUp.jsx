@@ -11,22 +11,22 @@ const Navabarup = () => {
   };
 
   return (
-    <div className="flex h-8 px-8 items-center justify-between bg-black">
-      <div className="ml-10">
+    <div className="flex h-8 px-6 items-center justify-between bg-black">
+      <div className="md:ml-10">
         <Navbarupocurrency />
       </div>
       {/* signup and login component */}
       {!localStorage.getItem("token") ? (
-        <div className=" text-white block text-xs mr-[10px] md:mr-[25px]">
-          <Link to="/signup" className="mx-2">
+        <div className=" text-white block text-xs md:mr-[25px]">
+          <Link to="/signup" className="mx-4">
             Singup
           </Link>
-          <Link to="/login" className="mx-2 mr-5">
+          <Link to="/login" className="">
             Login
           </Link>
         </div>
       ) : (
-        <button onClick={handleLogout} className="text-white mr-10 text-sm">
+        <button onClick={handleLogout} className="text-white md:mr-10 text-sm">
           Logout
         </button>
       )}

@@ -24,7 +24,7 @@ const LaptopPage = () => {
     <>
       <Navabarup />
       <Navbar />
-      <div className="mx-6 md:px-8 mt-10">
+      <div className="mx-6 md:px-8 my-10">
         <div className="flex justify-between">
           <h1 className="font-semibold text-2xl h-10 ">{setcategory}</h1>
         </div>

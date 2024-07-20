@@ -9,9 +9,9 @@ const MemoizeFontAwesomeIcon = React.memo(FontAwesomeIcon);
 
 const Navbar = () => {
   return (
-    <header className="flex px-8 justify-between bg-white h-14 items-center">
+    <header className="flex px-6 justify-between bg-white h-14 items-center">
       {/* bar icon and topic of the shop */}
-      <MemoizeFontAwesomeIcon icon={faBars} className="text-2xl ml-5 md:hidden" />
+      <MemoizeFontAwesomeIcon icon={faBars} className="text-2xl md:ml-5 md:hidden" />
       <div>
         <h1 className="font-semibold text-2xl ml-[10px] md:ml-[38px]">ShopOnline</h1>
       </div>
@@ -32,10 +32,10 @@ const Navbar = () => {
       </div>
 
       {/* search and add to cart icon */}
-      <div className="mr-[10px] md:mr-[20px]">
+      <div className="md:mr-[20px]">
         <MemoizeFontAwesomeIcon icon={faMagnifyingGlass} className="mr-5" />
         <Link to="/addtocart">
-          <MemoizeFontAwesomeIcon icon={faCartPlus} className="mr-6" />
+          <MemoizeFontAwesomeIcon icon={faCartPlus} className="" />
         </Link>
         {/* <Link to="/admin">admin</Link> */}
       </div>

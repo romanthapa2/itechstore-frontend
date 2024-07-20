@@ -89,10 +89,10 @@ const Addtocart = () => {
     <>
       <Navabarup />
       <Navbar />
-      <div className="h-fit py-5 flex flex-col md:flex-row justify-center gap-6 my-3">
+      <div className="h-fit py-2 flex flex-col justify-evenly md:flex-row md:gap-8">
         <div className="m-5 md:mb-4">
           <div className="py-3">
-            <h5 className="ml-1 md:ml-0 text-2xl font-semibold">Cart Quantity {cartData.length}</h5>
+            <h5 className="ml-1 md:ml-0 text-2xl font-semibold">Cart Items</h5>
           </div>
           {/* cartitem */}
           {cartData.map((data, index) => (
@@ -109,7 +109,7 @@ const Addtocart = () => {
         </div>
 
         {/* summary of cart items */}
-        <div className="md:mt-14 mx-5 md:mx-0">
+        <div className="md:mt-20 mx-5 md:mx-0">
           <div className=" bg-white p-10 rounded-lg">
             <div className="">
               <h5 className="mb-2 border-b-2 text-lg font-semibold">Summary</h5>

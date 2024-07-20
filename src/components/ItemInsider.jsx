@@ -51,14 +51,13 @@ const Iteminsider = () => {
   return (
     <>
       <Navbar />
-      <div className="md:h-screen bg-slate-100 flex flex-col md:flex-row md:items-center md:justify-center">
+      <div className="md:h-screen bg-slate-200 flex flex-col md:flex-row  md:justify-evenly md:p-10 p-5 gap-4">
         {/* diplay image */}
-        <div className="bg-white md:h-5/6 md:w-1/2 md:mr-10 md:ml-20 ">
-          {/* Render the image if imageurl is available */}
-          {imageurl && <img src={imageurl} alt="Laptop" className=" mt-5 w-full h-full" />}
+        <div className="bg-white md:h-5/6 md:w-[40%] rounded-md  ">
+          {imageurl && <img src={imageurl} alt="Laptop" className="w-full h-full p-14 " />}
         </div>
         {/* diplay  details of laptops*/}
-        <div className="bg-white  md:h-5/6 md:w-1/2 md:mr-20">
+        <div className="bg-white  md:h-5/6 md:w-[40%] rounded-md">
           <div className="ml-11 mr-11">
             <h5 className="mt-12 font-light text-sm">HOME / PRODUCTS / LAPTOPS / LENOVO</h5>
             <h1 className="mt-4 text-2xl font-semibold">{laptopdtabyid && laptopdtabyid.data.name}</h1>

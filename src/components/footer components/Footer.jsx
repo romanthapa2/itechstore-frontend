@@ -6,7 +6,7 @@ import { faEnvelope,faPhone } from '@fortawesome/free-solid-svg-icons'
 const MemoizeFontAwesomeIcon = React.memo(FontAwesomeIcon);
 const Footer = () => {
   return (
-    <div className='bg-white md:h-60 text-center py-6  mt-5 md:flex justify-evenly'>
+    <div className='bg-white md:h-60 text-center mt-8 md:mt-0 py-6 md:flex justify-evenly'>
     <div className='md:pt-0' >
       <h1 className='font-semibold mb-2'>Support</h1>
       <h3>1st floor,777 building</h3>

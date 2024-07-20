@@ -12,12 +12,12 @@ const cartItem = React.memo(({data, index, imgUrls, handleMinusCart, handleAddCa
   console.log(`app rendered 2 ${Math.random()}`)
   
   return (
-    <div className="mb-2 md:flex md:flex-row bg-white md:h-64 p-5 rounded-lg" key={index}>
+    <div className="mb-2 md:flex md:flex-row bg-white p-5 rounded-lg" key={index}>
       <div className=" md:mr-5">
-        {imgUrls[index] && <img src={imgUrls[index]} className="w-72 size-56" alt="Blue Jeans Jacket" />}
+        {imgUrls[index] && <img src={imgUrls[index]} className="w-72 size-56 md:w-48 md:size-44" alt="Blue Jeans Jacket" />}
       </div>
 
-      <div className="mb-4 mr-10 text-xl w-72">
+      <div className="mr-10 w-72">
         <p className="mb-2">
           <strong>{data.name}</strong>
         </p>
