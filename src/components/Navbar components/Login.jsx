@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie"
 
 const Loginhoi = () => {
   let history = useNavigate();
@@ -14,10 +15,9 @@ const Loginhoi = () => {
       body: JSON.stringify({ email: value.email, password: value.password }),
     });
     const json = await response.json();
-    console.log(json);
 
     if (json.success) {
-      localStorage.setItem('token', json.token);
+      Cookies.set('accessToken', json.data.accessToken);
       history("/");
     } else {
       return <h1>error</h1>
@@ -29,7 +29,7 @@ const Loginhoi = () => {
   };
   return (
     <div className="h-screen flex justify-center items-center">
-      <div className="h-[55%] w-[25%] bg-white rounded-md flex flex-col justify-center items-center">
+      <div className="h-[55%] w-80 bg-white rounded-md flex flex-col justify-center items-center">
       <h1 className="text-3xl mb-6">SIGN IN</h1>
       <form className=" w-60 space-y-3" onSubmit={handleSubmit}>
         <div className="flex flex-col border ">

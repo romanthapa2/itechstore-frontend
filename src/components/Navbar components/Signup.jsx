@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie"
 
 const Signup = () => {
   let history = useNavigate();
@@ -7,7 +8,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password } = value;
-    const response = await fetch("http://localhost:5000/api/user/registor", {
+    const response = await fetch("http://localhost:5000/api/user/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,7 +17,7 @@ const Signup = () => {
     });
     const json = await response.json();
     if (json.success) {
-      localStorage.setItem("token", json.token);
+      Cookies.set("accessToken", json.data.accessToken);
       history("/");
     } else {
       return <h1>error</h1>;
@@ -29,7 +30,7 @@ const Signup = () => {
   return (
     <div className="h-screen text-black flex justify-center flex-col items-center">
 
-      <div className="h-[55%] w-[25%] bg-white rounded-md flex flex-col justify-center items-center">
+      <div className="h-[55%] w-80 bg-white rounded-md flex flex-col justify-center items-center">
       <h1 className="text-3xl mb-6">sign up</h1>
         <form onSubmit={handleSubmit} className="w-60 space-y-4 ">
           <div className="flex flex-col border ">
