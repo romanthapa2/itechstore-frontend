@@ -47,7 +47,7 @@ const Laptops = () => {
 
       <div className="md:grid grid-cols-4 grid-rows-1 gap-3 mt-1">
         {/* loop over the filtred data up to 4  */}
-        {Array.isArray(laptopData.data) &&
+        {Array.isArray(laptopData?.data) &&
           laptopData.data.slice(0, 4).map((laptop, index) => {
             return <LaptopCard key={index} laptop={laptop} />;
           })}
