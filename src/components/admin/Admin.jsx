@@ -1,6 +1,8 @@
+import { url } from "../../url";
 import React, { useRef } from "react";
 import { useState } from "react";
 const FormData = require("form-data");
+
 
 const Admin = () => {
   let formref = useRef(null);
@@ -31,7 +33,7 @@ const Admin = () => {
       formDataToSend.append("desc", fomvalue.desc);
       formDataToSend.append("price", fomvalue.price);
       formDataToSend.append("img", fomvalue.img);
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/add-product`, {
+      const response = await fetch(`${url}/api/admin/add-product`, {
         method: "POST",
         body: formDataToSend,
       });

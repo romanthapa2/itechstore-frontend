@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchlaptopbyid } from "../reduxstore/LaptopSlice";
 import { useNavigate } from "react-router-dom";
+import { url } from "../url";
 
 // get the laptop as props from parent components
 const LaptopCard = ({ laptop }) => {
@@ -13,7 +14,7 @@ const LaptopCard = ({ laptop }) => {
     const fetchImage = async () => {
       try {
         // Construct image URL from backend endpoint and image path
-        const imageurl = `http://localhost:5000/${laptop.img}`;
+        const imageurl = `${url}/${laptop.img}`;
         const response = await fetch(imageurl);
 
         if (!response.ok) {

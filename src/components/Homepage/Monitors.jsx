@@ -5,6 +5,7 @@ import LaptopCard from "../LaptopCard";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchlaptop, setcategory } from "../../reduxstore/LaptopSlice";
+import { url } from "../../url";
 
 const Monitors = () => {
   const [monitors, setMonitors] = useState([]);
@@ -16,7 +17,7 @@ const Monitors = () => {
   useEffect(() => {
     const fetchMonitor = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/filter/dataByType?type=Monitors`);
+        const response = await fetch(`${url}/api/filter/dataByType?type=Monitors`);
         const data = await response.json();
         setMonitors(data.data);
       } catch (error) {

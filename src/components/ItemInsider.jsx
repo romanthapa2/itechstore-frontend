@@ -8,20 +8,19 @@ import Navbar from "./Navbar components/Navbar";
 import { addToCart } from "../reduxstore/CartSlice";
 import Footer from "./footer components/Footer";
 import Footermuni from "./footer components/FooterMuni";
-
+import { url } from "../url";
 // when some laptop is clicked this page is shown
 const Iteminsider = () => {
   const [imageurl, setimageurl] = useState("");
   const laptoploadings = useSelector(laptopLoading);
   const laptperror = useSelector(laptopError);
   const laptopdtabyid = useSelector(laptopdataid);
-  console.log(laptopdtabyid.data);
 
   useEffect(() => {
     if (laptopdtabyid && laptopdtabyid.data.img) {
       const fetchImage = async () => {
         try {
-          const imageUrl = `http://localhost:5000/${laptopdtabyid && laptopdtabyid.data.img}`;
+          const imageUrl = `${url}/${laptopdtabyid && laptopdtabyid.data.img}`;
           const response = await fetch(imageUrl);
 
           if (!response.ok) {

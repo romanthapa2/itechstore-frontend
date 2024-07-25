@@ -7,6 +7,7 @@ import Navabarup from "../Navbar components/NavabarUp";
 import CartItem from "./CartItemCard";
 import Footer from "../footer components/Footer";
 import Footermuni from "../footer components/FooterMuni";
+import { url } from "../../url";
 
 const Addtocart = () => {
   // getting the array of laptops detail which is stored in array of reducer
@@ -30,7 +31,7 @@ const Addtocart = () => {
         try {
           const urls = await Promise.all(
             cartData.map(async (data) => {
-              const imageUrl = `http://localhost:5000/${data.img}`;
+              const imageUrl = `${url}/${data.img}`;
               console.log(imageUrl)
               const response = await fetch(imageUrl, { signal });
               if (!response.ok) {

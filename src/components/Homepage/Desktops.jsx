@@ -5,6 +5,7 @@ import LaptopCard from "../LaptopCard";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchlaptop, setcategory } from "../../reduxstore/LaptopSlice";
+import { url } from "../../url";
 
 const Desktops = () => {
   const [desktops, setDesktops] = useState([]);
@@ -16,7 +17,7 @@ const Desktops = () => {
   useEffect(() => {
     const fetchDesktop = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/filter/dataByType?type=Desktop`);
+        const response = await fetch(`${url}/api/filter/dataByType?type=Desktop`);
         const data = await response.json();
         setDesktops(data.data);
       } catch (error) {
