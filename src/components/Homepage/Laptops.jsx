@@ -16,7 +16,6 @@ const Laptops = () => {
   const laptopErrorStatus = useSelector(laptopError);
   // get the filtered data i.e laptop from slice
   const laptopData = useSelector(laptopdata);
-  console.log(laptopData.data);
   const navigate = useNavigate();
 
   useEffect(() => {
