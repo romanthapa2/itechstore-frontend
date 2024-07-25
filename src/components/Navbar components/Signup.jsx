@@ -8,7 +8,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password } = value;
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/user/register`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

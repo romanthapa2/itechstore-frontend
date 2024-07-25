@@ -13,9 +13,9 @@ export const fetchlaptop = createAsyncThunk("get/fetchfilteredlaptop", async (ty
   try {
     let response;
     if (type === "Laptop" || type === "Monitors" || type === "Desktop") {
-      response = await fetch(`${process.env.REACT_APP_API_URL}/filter/dataByType?type=${type}`);
+      response = await fetch(`${process.env.REACT_APP_API_URL}/api/filter/dataByType?type=${type}`);
     } else {
-      response = await fetch(`${process.env.REACT_APP_API_URL}/filter/dataByBrand?brand=${type}`);
+      response = await fetch(`${process.env.REACT_APP_API_URL}/api/filter/dataByBrand?brand=${type}`);
     }
     if (!response.ok) {
       throw new Error("Failed to fetch");
@@ -30,7 +30,7 @@ export const fetchlaptop = createAsyncThunk("get/fetchfilteredlaptop", async (ty
 // fetch the data by id
 export const fetchlaptopbyid = createAsyncThunk(`laptop/fetchlaptopbyid`, async (laptopid) => {
   console.log(laptopid)
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/filter/dataById/${laptopid}`);
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/filter/dataById/${laptopid}`);
   const data = await response.json();
   console.log(data)
   return data

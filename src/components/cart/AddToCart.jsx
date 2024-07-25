@@ -7,14 +7,11 @@ import Navabarup from "../Navbar components/NavabarUp";
 import CartItem from "./CartItemCard";
 import Footer from "../footer components/Footer";
 import Footermuni from "../footer components/FooterMuni";
-import cartItem from "./CartItemCard";
 
 const Addtocart = () => {
-  console.log(`app rendered ${Math.random()}`)
   // getting the array of laptops detail which is stored in array of reducer
   // like [{name:..,price:...}]
   const cartData = useSelector(cart);
-  console.log(cartData)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [imgUrls, setImgUrls] = useState([]);
@@ -33,8 +30,8 @@ const Addtocart = () => {
         try {
           const urls = await Promise.all(
             cartData.map(async (data) => {
-              console.log(data.img)
               const imageUrl = `http://localhost:5000/${data.img}`;
+              console.log(imageUrl)
               const response = await fetch(imageUrl, { signal });
               if (!response.ok) {
                 throw new Error("Failed to fetch image");
@@ -52,7 +49,7 @@ const Addtocart = () => {
     return () => {
       abortController.abort();
     };
-  }, [cartItem]);
+  }, [cartData]);
 
 
   const [price, setprice] = useState(0);

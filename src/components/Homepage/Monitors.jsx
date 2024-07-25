@@ -16,7 +16,7 @@ const Monitors = () => {
   useEffect(() => {
     const fetchMonitor = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/filter/dataByType?type=Monitors`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/filter/dataByType?type=Monitors`);
         const data = await response.json();
         setMonitors(data.data);
       } catch (error) {

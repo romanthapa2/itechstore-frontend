@@ -9,7 +9,6 @@ const cartItem = React.memo(({data, index, imgUrls, handleMinusCart, handleAddCa
   const onMinusClick = () => handleMinusCart(data);
   const onAddClick = () => handleAddCart(data);
   const onDeleteClick = () => hanledeleteitem(index);
-  console.log(`app rendered 2 ${Math.random()}`)
   
   return (
     <div className="mb-2 md:flex md:flex-row bg-white p-5 rounded-lg" key={index}>

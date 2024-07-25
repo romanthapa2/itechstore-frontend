@@ -23,7 +23,7 @@ const Navabarup = () => {
           <Link to="/signup" className="mx-4">
             Singup
           </Link>
-          <Link to="/login" className="">
+          <Link to="/login" className="md:mr-5">
             Login
           </Link>
         </div>
