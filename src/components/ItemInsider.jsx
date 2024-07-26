@@ -17,7 +17,7 @@ const Iteminsider = () => {
   const laptopdtabyid = useSelector(laptopdataid);
 
   useEffect(() => {
-    if (laptopdtabyid && laptopdtabyid.data.img) {
+    if (laptopdtabyid && laptopdtabyid?.data.img) {
       const fetchImage = async () => {
         try {
           const imageUrl = `${url}/${laptopdtabyid && laptopdtabyid.data.img}`;

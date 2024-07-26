@@ -32,7 +32,6 @@ const LaptopCard = ({ laptop }) => {
   // handle when some laptop is clicked
   const handleopen = (e) => {
     e.preventDefault();
-    console.log(laptop._id)
     dispatch(fetchlaptopbyid(laptop._id));
     navigate("/iteminsider");
   };

@@ -31,7 +31,7 @@ const LaptopPage = () => {
 
         <div className="md:grid grid-cols-4 grid-rows-1 gap-2 mt-1">
           {/* loop over the filtred data up to 4  */}
-          {laptopData.data &&
+          {laptopData?.data &&
             laptopData.data.map((laptop, index) => {
               return <LaptopCard key={index} laptop={laptop} />;
             })}
