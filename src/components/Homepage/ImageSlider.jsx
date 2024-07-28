@@ -1,10 +1,8 @@
 
-
 import React from "react";
 import Slider from "react-slick";
 import Image1 from "../../pictures/61insmaQR-S._AC_SL1500_-removebg.png";
 import Image2 from "../../pictures/macbook.png";
-// import Button from "../../utils/Button";
 
 const HeroData = [
   {
@@ -25,19 +23,19 @@ const HeroData = [
 ];
 
 const Imageslider = () => {
-  const CustomPrevArrow = (props) => (
+  const CustomPrevArrow = ({ className, style, onClick }) => (
     <button
-      {...props}
-      className="slick-arrow slick-prev"
-      style={{ ...props.style, left: "0px", zIndex: 1  }}
+    className={className}
+    style={{ ...style, left: "0px", zIndex: 1 }}
+    onClick={onClick}
     />
   );
 
-  const CustomNextArrow = (props) => (
+  const CustomNextArrow = ({ className, style, onClick }) => (
     <button
-      {...props}
-      className="slick-arrow slick-next"
-      style={{ ...props.style, right: "0px", zIndex: 1 }}
+    className={className}
+    style={{ ...style, right: "0px", zIndex: 1 }}
+    onClick={onClick}
     />
   );
 
@@ -95,19 +93,7 @@ const Imageslider = () => {
                     >
                       {data.title2}
                     </h1>
-                    {/* <div
-                      data-aos="fade-up"
-                      data-aos-offset="0"
-                      data-aos-duration="500"
-                      data-aos-delay="300"
-                    >
-                      <Button
-                        text="Shop By Category"
-                        bgColor="bg-primary"
-                        textColor="text-white"
-                        // handler={handleOrderPopup}
-                      />
-                    </div> */}
+
                   </div>
                   {/* Img section */}
                   <div className="order-1 sm:order-2">

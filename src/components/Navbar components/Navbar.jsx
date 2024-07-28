@@ -3,8 +3,9 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faMagnifyingGlass, faCartPlus , faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import Types from "./Types";
-import Bands from "./Bands";
+import TypesIndex from "./categories/Index";
+import BrandsIndex from "./brands/index";
+import DispatchSelectedCategory from "./categories/DispatchSelectedCategory";
 
 const MemoizeFontAwesomeIcon = React.memo(FontAwesomeIcon);
 
@@ -29,10 +30,10 @@ const Navbar = () => {
             Home
           </Link>
           <div className="mx-4">
-            <Types />
+            <TypesIndex />
           </div>
           <div className="mx-4">
-            <Bands />
+            <BrandsIndex />
           </div>
         </ul>
       </div>
@@ -50,29 +51,19 @@ const Navbar = () => {
         <div className="fixed inset-0 flex z-50">
           <div className="w-64 bg-white shadow-md p-10">
             <ul className="flex flex-col">
-              <div className="flex justify-between ">
-              <Link to="/" className="mb-4 text-3xl">
+              <div className="flex justify-between">
+              <Link to="/" className="mb-2 text-2xl ">
                 Home
               </Link>
               <FontAwesomeIcon icon={faXmark} className="text-3xl" onClick={toggleSidebar} />
               </div>
               <div className="mb-4">
-                <h1 className="text-2xl mb-3 font-semibold">Categories</h1>
-                <ul className="space-y-3 text-2xl">
-                  <li>Laptops</li>
-                  <li>Monitors</li>
-                  <li>Desktops</li>
-                  <li>Show all</li>
-                </ul>
+                <h1 className="text-2xl mb-2 font-semibold">Categories</h1>
+                <DispatchSelectedCategory/>
               </div>
               <div className="mb-4">
-                <h1 className="text-2xl mb-3 font-semibold">Brands</h1>
-                <ul className="space-y-3 text-2xl">
-                  <li>Apple</li>
-                  <li>Lenovo</li>
-                  <li>Dell</li>
-                  <li>Show all</li>
-                </ul>
+                <h1 className="text-2xl mb-2 font-semibold">Brands</h1>
+                <DispatchSelectedCategory/>
               </div>
             </ul>
           </div>

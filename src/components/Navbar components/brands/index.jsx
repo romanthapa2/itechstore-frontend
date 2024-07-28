@@ -1,30 +1,9 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { ChevronDownIcon} from '@heroicons/react/20/solid'
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { fetchlaptop, setcategory } from "../../reduxstore/LaptopSlice";
+import DispatchSelectedBrand from './DispatchSelectedBrand'
 
-const solutions = [
-  { name: 'Apple'},
-  { name: 'Lenovo'},
-  { name: 'Dell'},
-  { name: 'Acer'},
-  { name: 'HP'},
-  { name: 'Samsung'},
-]
-
-export default function Bands() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const Handletype = (data) => {
-    dispatch(fetchlaptop(data));
-    dispatch(setcategory(data))
-    navigate("/LaptopPage");
-  };
-
-
+export default function BrandsIndex() {
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 text-xl focus:outline-none" >
@@ -45,17 +24,7 @@ export default function Bands() {
           <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
             <div className="p-4">
             <a className='font-semibold p-1 text-lg'>All Brands</a>
-              {solutions.map((item) => (
-                
-                <div key={item.name} onClick={() => Handletype(item.name)} className="group relative flex gap-x-2 rounded-lg p-1 hover:bg-gray-50">
-                  <div>
-                    <a className="font-semibold text-gray-900">
-                      {item.name}
-                      <span className="absolute inset-0" />
-                    </a>
-                  </div>
-                </div>
-              ))}
+              <DispatchSelectedBrand/>
               <a className='p-1'>Show all</a>
             </div>
           </div>
