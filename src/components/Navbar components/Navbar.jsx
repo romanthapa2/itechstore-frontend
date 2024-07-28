@@ -1,15 +1,24 @@
 import React from "react";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faMagnifyingGlass, faCartPlus , faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faMagnifyingGlass, faCartPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import TypesIndex from "./categories/Index";
 import BrandsIndex from "./brands/index";
 import DispatchSelectedCategory from "./categories/DispatchSelectedCategory";
+import { useSelector } from "react-redux";
+import {cart } from "../../reduxstore/CartSlice"
 
 const MemoizeFontAwesomeIcon = React.memo(FontAwesomeIcon);
 
 const Navbar = () => {
+  const cartdata = useSelector(cart);
+  
+  const totalCartQuantity = cartdata.reduce((accumulator,currentValue)=>{
+    return accumulator + currentValue.quantity
+  },0) 
+
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -25,25 +34,25 @@ const Navbar = () => {
 
       {/* different topics for navbar */}
       <div className="hidden md:block">
-        <ul className="flex flex-row">
-          <Link to="/" className="mx-4 text-xl">
+        <ul className="flex flex-row gap-10">
+          <Link to="/" className="text-xl font-semibold">
             Home
           </Link>
-          <div className="mx-4">
-            <TypesIndex />
-          </div>
-          <div className="mx-4">
-            <BrandsIndex />
-          </div>
+          <TypesIndex />
+          <BrandsIndex />
         </ul>
       </div>
 
       {/* search and add to cart icon */}
-      <div className="">
-        <MemoizeFontAwesomeIcon icon={faMagnifyingGlass} className="mr-5" />
-        <Link to="/addtocart">
-          <MemoizeFontAwesomeIcon icon={faCartPlus} className="" />
+      <div className="flex flex-row">
+        <MemoizeFontAwesomeIcon icon={faMagnifyingGlass} className="mr-5 size-5" />
+        <Link to="/addtocart" className="relative">
+          <MemoizeFontAwesomeIcon icon={faCartPlus} className="size-5" />
+          <span className="absolute -right-4 -top-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+          {totalCartQuantity}
+          </span>
         </Link>
+
         {/* <Link to="/admin">admin</Link> */}
       </div>
 
@@ -52,18 +61,18 @@ const Navbar = () => {
           <div className="w-64 bg-white shadow-md p-10">
             <ul className="flex flex-col">
               <div className="flex justify-between">
-              <Link to="/" className="mb-2 text-2xl ">
-                Home
-              </Link>
-              <FontAwesomeIcon icon={faXmark} className="text-3xl" onClick={toggleSidebar} />
+                <Link to="/" className="mb-2 text-2xl ">
+                  Home
+                </Link>
+                <FontAwesomeIcon icon={faXmark} className="text-3xl" onClick={toggleSidebar} />
               </div>
               <div className="mb-4">
                 <h1 className="text-2xl mb-2 font-semibold">Categories</h1>
-                <DispatchSelectedCategory/>
+                <DispatchSelectedCategory />
               </div>
               <div className="mb-4">
                 <h1 className="text-2xl mb-2 font-semibold">Brands</h1>
-                <DispatchSelectedCategory/>
+                <DispatchSelectedCategory />
               </div>
             </ul>
           </div>

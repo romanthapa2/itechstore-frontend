@@ -9,7 +9,7 @@ export default function CategoriesIndex() {
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 text-xl focus:outline-none">
-        <span>Shop</span>
+        <span className="font-semibold">Shop</span>
         <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
       </Popover.Button>
 

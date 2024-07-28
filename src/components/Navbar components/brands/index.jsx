@@ -7,7 +7,7 @@ export default function BrandsIndex() {
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 text-xl focus:outline-none" >
-        <span>Brands</span>
+        <span className='font-semibold'>Brands</span>
         <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
       </Popover.Button>
 
