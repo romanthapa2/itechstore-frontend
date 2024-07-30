@@ -32,7 +32,6 @@ const Addtocart = () => {
           const urls = await Promise.all(
             cartData.map(async (data) => {
               const imageUrl = `${url}/${data.img}`;
-              console.log(imageUrl)
               const response = await fetch(imageUrl, { signal });
               if (!response.ok) {
                 throw new Error("Failed to fetch image");
@@ -42,11 +41,15 @@ const Addtocart = () => {
           );
           setImgUrls(urls);
         } catch (error) {
-          console.error("Error fetching images:", error);
-        }
-      };
-      fetchImages();
+          if (error.name === 'AbortError') {
+            console.log('Fetch aborted');
+          } else {
+            console.error("Error fetching images:", error.message);
+          }
+      }
     }
+    fetchImages();
+  }
     return () => {
       abortController.abort();
     };
