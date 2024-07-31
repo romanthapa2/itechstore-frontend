@@ -4,10 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { laptopError, laptopLoading, laptopdataid } from "../reduxstore/LaptopSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
-import Navbar from "./Navbar components/Navbar";
 import { addToCart } from "../reduxstore/CartSlice";
-import Footer from "./footer components/Footer";
-import Footermuni from "./footer components/FooterMuni";
 import { url } from "../url";
 // when some laptop is clicked this page is shown
 const Iteminsider = () => {
@@ -49,7 +46,6 @@ const Iteminsider = () => {
 
   return (
     <>
-      <Navbar />
       <div className="md:h-screen bg-slate-200 flex flex-col md:flex-row  md:justify-evenly md:p-10 p-5 gap-4">
         {/* diplay image */}
         <div className="bg-white md:h-5/6 md:w-[40%] rounded-md  ">
@@ -110,8 +106,6 @@ const Iteminsider = () => {
           </div>
         </div>
       </div>
-      <Footer />
-      <Footermuni />
     </>
   );
 };

@@ -4,11 +4,10 @@ import Navbarupocurrency from "./Navbarupcurrency";
 import Cookies from "js-cookie"
 
 const Navabarup = () => {
-  // returns navbar
-  let history = useNavigate();
+  let navigate = useNavigate();
   const handleLogout = () => {
     Cookies.remove("accessToken");
-    history("/");
+    navigate("/");
   };
 
 
@@ -21,7 +20,7 @@ const Navabarup = () => {
       {!Cookies.get("accessToken") ? (
         <div className=" text-white block text-xs md:mr-[25px]">
           <Link to="/signup" className="mx-4">
-            Singup
+            Signup
           </Link>
           <Link to="/login" className="md:mr-5">
             Login

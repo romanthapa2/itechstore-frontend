@@ -1,10 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import LaptopCard from "./LaptopCard";
-import Navabarup from "./Navbar components/NavabarUp";
-import Navbar from "./Navbar components/Navbar";
-import Footer from "./footer components/Footer";
-import Footermuni from "./footer components/FooterMuni";
 import { laptopError, laptopLoading, laptopdata, category } from "../reduxstore/LaptopSlice";
 
 const LaptopPage = () => {
@@ -22,8 +18,6 @@ const LaptopPage = () => {
   }
   return (
     <>
-      <Navabarup />
-      <Navbar />
       <div className="mx-6 md:px-8 my-10">
         <div className="flex justify-between">
           <h1 className="font-semibold text-2xl h-10 ">{setcategory}</h1>
@@ -37,8 +31,6 @@ const LaptopPage = () => {
             })}
         </div>
       </div>
-      <Footer />
-      <Footermuni />
     </>
   );
 };

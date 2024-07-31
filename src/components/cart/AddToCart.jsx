@@ -1,12 +1,8 @@
-import React, { useEffect, useMemo, useState,useCallback } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { cart, deleteCart, addToCart } from "../../reduxstore/CartSlice";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../Navbar components/Navbar";
-import Navabarup from "../Navbar components/NavabarUp";
 import CartItem from "./CartItemCard";
-import Footer from "../footer components/Footer";
-import Footermuni from "../footer components/FooterMuni";
 import { url } from "../../url";
 
 const Addtocart = () => {
@@ -19,7 +15,7 @@ const Addtocart = () => {
 
   const handleNavigation = useCallback(() => {
     navigate("/checkoutpage");
-  },[navigate]);
+  }, [navigate]);
 
   // fetch all images cuncurrently
   useEffect(() => {
@@ -41,20 +37,19 @@ const Addtocart = () => {
           );
           setImgUrls(urls);
         } catch (error) {
-          if (error.name === 'AbortError') {
-            console.log('Fetch aborted');
+          if (error.name === "AbortError") {
+            console.log("Fetch aborted");
           } else {
             console.error("Error fetching images:", error.message);
           }
-      }
+        }
+      };
+      fetchImages();
     }
-    fetchImages();
-  }
     return () => {
       abortController.abort();
     };
   }, [cartData]);
-
 
   const [price, setprice] = useState(0);
   // calculate total price of all items in the cart
@@ -72,7 +67,6 @@ const Addtocart = () => {
     setprice(totalprice);
   }, [cartData]);
 
-
   // dispatches the actions to the cartarray
   const hanledeleteitem = (e) => {
     dispatch(deleteCart(e));
@@ -88,8 +82,6 @@ const Addtocart = () => {
 
   return (
     <>
-      <Navabarup />
-      <Navbar />
       <div className="h-fit py-2 flex flex-col justify-evenly md:flex-row md:gap-8">
         <div className="m-5 md:mb-4">
           <div className="py-3">
@@ -148,8 +140,6 @@ const Addtocart = () => {
           </div>
         </div>
       </div>
-      <Footer />
-      <Footermuni />
     </>
   );
 };
