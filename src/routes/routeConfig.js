@@ -7,7 +7,6 @@ import Addtocart from "../components/cart/AddToCart";
 import Signup from "../components/Navbar components/Signup";
 import Admin from "../components/admin/Admin";
 import Iteminsider from "../components/ItemInsider";
-import LaptopCard from "../components/LaptopCard";
 import CategoriesIndex from "../components/Navbar components/categories/Index";
 import Navbarupocurrency from "../components/Navbar components/Navbarupcurrency";
 import LaptopPage from "../components/LaptopPage";
@@ -25,11 +24,10 @@ const routes = createBrowserRouter([
       { path: "signup", element: <Signup /> },
       { path: "addtocart", element: <Addtocart /> },
       { path: "admin", element: <Admin /> },
-      { path: "LaptopCard", element: <LaptopCard /> },
-      { path: "iteminsider", element: <Iteminsider /> },
+      { path: "item", element: <Iteminsider /> },
       { path: "currency", element: <Navbarupocurrency /> },
-      { path: "laptoppage", element: <LaptopPage /> },
-      { path: "checkoutpage", element: <CheckOutPage /> },
+      { path: "laptops", element: <LaptopPage /> },
+      { path: "checkout", element: <CheckOutPage /> },
     ],
   },
 ]);

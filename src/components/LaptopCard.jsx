@@ -33,7 +33,7 @@ const LaptopCard = ({ laptop }) => {
   const handleopen = (e) => {
     e.preventDefault();
     dispatch(fetchlaptopbyid(laptop._id));
-    navigate("/iteminsider");
+    navigate("/item");
   };
 
   return (

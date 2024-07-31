@@ -14,7 +14,7 @@ const Addtocart = () => {
   const [imgUrls, setImgUrls] = useState([]);
 
   const handleNavigation = useCallback(() => {
-    navigate("/checkoutpage");
+    navigate("/checkout");
   }, [navigate]);
 
   // fetch all images cuncurrently
