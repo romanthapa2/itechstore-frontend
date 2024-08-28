@@ -10,32 +10,38 @@ const initialState = {
 };
 
 // fetching the filtred data of laptop in redux using asyncthunk
-export const fetchlaptop = createAsyncThunk("get/fetchfilteredlaptop", async (type) => {
-  try {
-    let response;
-    if (type === "Laptop" || type === "Monitors" || type === "Desktop") {
-      response = await fetch(`${url}/api/filter/dataByType?type=${type}`);
-    } else {
-      response = await fetch(`${url}/api/filter/dataByBrand?brand=${type}`);
+export const fetchlaptop = createAsyncThunk(
+  "get/fetchfilteredlaptop",
+  async (type) => {
+    try {
+      let response;
+      if (type === "Laptop" || type === "Monitors" || type === "Desktop") {
+        response = await fetch(`${url}/api/filter/dataByType?type=${type}`);
+      } else {
+        response = await fetch(`${url}/api/filter/dataByBrand?brand=${type}`);
+      }
+      if (!response.ok) {
+        throw new Error("Failed to fetch");
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Error fetching laptop data:", error);
+      throw error;
     }
-    if (!response.ok) {
-      throw new Error("Failed to fetch");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching laptop data:", error);
-    throw error;
   }
-});
+);
 
 // fetch the data by id
-export const fetchlaptopbyid = createAsyncThunk(`laptop/fetchlaptopbyid`, async (laptopid) => {
-  console.log(laptopid)
-  const response = await fetch(`${url}/api/filter/dataById/${laptopid}`);
-  const data = await response.json();
-  console.log(data)
-  return data
-});
+export const fetchlaptopbyid = createAsyncThunk(
+  `laptop/fetchlaptopbyid`,
+  async (laptopid) => {
+    console.log(laptopid);
+    const response = await fetch(`${url}/api/filter/dataById/${laptopid}`);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  }
+);
 
 export const Laptopslice = createSlice({
   name: "laptopslice",
