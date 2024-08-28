@@ -12,6 +12,7 @@ const Iteminsider = () => {
   const laptoploadings = useSelector(laptopLoading);
   const laptperror = useSelector(laptopError);
   const laptopdtabyid = useSelector(laptopdataid);
+  console.log(laptopdtabyid);
 
   useEffect(() => {
     if (laptopdtabyid && laptopdtabyid?.data.img) {

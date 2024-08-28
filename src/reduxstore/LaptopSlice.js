@@ -35,10 +35,8 @@ export const fetchlaptop = createAsyncThunk(
 export const fetchlaptopbyid = createAsyncThunk(
   `laptop/fetchlaptopbyid`,
   async (laptopid) => {
-    console.log(laptopid);
     const response = await fetch(`${url}/api/filter/dataById/${laptopid}`);
     const data = await response.json();
-    console.log(data);
     return data;
   }
 );
