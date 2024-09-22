@@ -2,16 +2,15 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import LaptopCard from "../LaptopCard";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchlaptop, setcategory } from "../../reduxstore/LaptopSlice";
 import { url } from "../../url";
+import { Link } from "react-router-dom";
 
 const Desktops = () => {
   const [desktops, setDesktops] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,19 +37,21 @@ const Desktops = () => {
     return <div>Error: {error.message}</div>;
   }
 
+
+
+
   const viewall = () => {
     dispatch(fetchlaptop("Desktop"));
     dispatch(setcategory("Desktops"));
-    navigate("./category/Desktops");
   };
 
   return (
     <div className="mx-6 md:mx-10 md:pl-4 my-10">
       <div className="flex justify-between">
         <h3 className="font-semibold text-xl">Desktops</h3>
-        <h3 className="mr-12  hover:underline text-blue-800" onClick={viewall}>
+        <Link className="mr-12  hover:underline text-blue-800" to={"/category/Desktops"} onClick={viewall}>
           View all
-        </h3>
+        </Link>
       </div>
 
       <div className="md:grid grid-cols-4 grid-rows-1 gap-3 mt-1">

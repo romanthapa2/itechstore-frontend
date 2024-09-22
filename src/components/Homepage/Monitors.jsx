@@ -2,16 +2,15 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import LaptopCard from "../LaptopCard";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchlaptop, setcategory } from "../../reduxstore/LaptopSlice";
 import { url } from "../../url";
+import { Link } from "react-router-dom";
 
 const Monitors = () => {
   const [monitors, setMonitors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,16 +40,15 @@ const Monitors = () => {
   const viewall = () => {
     dispatch(fetchlaptop("Monitors"));
     dispatch(setcategory("Monitors"));
-    navigate("./category/Monitors");
   };
 
   return (
     <div className="mx-6 md:mx-10 md:pl-4 mt-10 ">
       <div className="flex justify-between">
         <h3 className="font-semibold text-xl">Monitors</h3>
-        <h3 className="mr-12  hover:underline text-blue-800" onClick={viewall}>
+        <Link className="mr-12  hover:underline text-blue-800" to={"/category/Monitors"} onClick={viewall}>
           View all
-        </h3>
+        </Link>
       </div>
 
       <div className="md:grid grid-cols-4 justify-center grid-rows-1 gap-3 mt-1">

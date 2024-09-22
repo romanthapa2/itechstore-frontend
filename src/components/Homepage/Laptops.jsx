@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LaptopCard from "../LaptopCard";
-import { useNavigate } from "react-router-dom";
 import {
   fetchlaptop,
   laptopError,
@@ -9,6 +8,7 @@ import {
   laptopdata,
   setcategory,
 } from "../../reduxstore/LaptopSlice";
+import { Link } from "react-router-dom";
 
 const Laptops = () => {
   const dispatch = useDispatch();
@@ -16,17 +16,12 @@ const Laptops = () => {
   const laptopErrorStatus = useSelector(laptopError);
   // get the filtered data i.e laptop from slice
   const laptopData = useSelector(laptopdata);
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchlaptop("Laptop"));
     dispatch(setcategory("Laptop"));
-  }, [dispatch]);
+  }, []);
 
-  // veiwall
-  const viewall = () => {
-    navigate("./category/Laptops");
-  };
 
   if (laptopLoadingStatus) {
     return <div>Loading...</div>;
@@ -40,9 +35,9 @@ const Laptops = () => {
     <div className="mx-6 md:mx-10 md:pl-4 mt-10 ">
       <div className="flex justify-between">
         <h3 className="font-semibold text-xl">Laptops</h3>
-        <h3 className="mr-12  hover:underline text-blue-800" onClick={viewall}>
+        <Link className="mr-12  hover:underline text-blue-800" to={"/category/Laptops"}>
           View all
-        </h3>
+        </Link>
       </div>
 
       <div className="md:grid grid-cols-4 grid-rows-1 gap-3 mt-1">
