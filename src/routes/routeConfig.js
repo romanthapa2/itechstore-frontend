@@ -19,7 +19,7 @@ const routes = createBrowserRouter([
       { path: "signup", element: <Signup /> },
       { path: "addtocart", element: <Addtocart /> },
       { path: "admin", element: <Admin /> },
-      { path: "item", element: <Iteminsider /> },
+      { path: "product/:name", element: <Iteminsider /> },
       { path: "category/:type", element: <LaptopPage /> },
       { path: "brand/:type", element: <LaptopPage /> },
       { path: "checkout", element: <CheckOutPage /> },

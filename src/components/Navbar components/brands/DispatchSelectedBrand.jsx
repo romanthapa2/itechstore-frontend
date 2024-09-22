@@ -17,7 +17,6 @@ const DispatchSelectedBrand = () => {
   const Handletype = (data) => {
     dispatch(fetchlaptop(data));
     dispatch(setcategory(data));
-
   };
   return (
     <>

@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchlaptopbyid } from "../reduxstore/LaptopSlice";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { url } from "../url";
 
 // get the laptop as props from parent components
 const LaptopCard = ({ laptop }) => {
   const [imageurl, setimageurl] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchImage = async () => {
@@ -29,14 +28,13 @@ const LaptopCard = ({ laptop }) => {
     fetchImage();
   }, [laptop.img]);
 
-  // handle when some laptop is clicked
+
   const handleopen = (e) => {
-    e.preventDefault();
     dispatch(fetchlaptopbyid(laptop._id));
-    navigate("/item");
   };
 
   return (
+    <Link to={`/product/${laptop.name}`}>
     <div className="flex flex-col mt-4 bg-white h-[95%] w-full px-5 py-9 rounded-xl" onClick={handleopen}>
       <div>
         <img className="h-52 rounded-xl transition-transform md:hover:scale-110" src={imageurl} alt={laptop.name} />
@@ -46,6 +44,7 @@ const LaptopCard = ({ laptop }) => {
         <h2 className="font-semibold">RS.{laptop.price}</h2>
       </div>
     </div>
+     </Link>
   );
 };
 
