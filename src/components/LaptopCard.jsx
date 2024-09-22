@@ -35,7 +35,7 @@ const LaptopCard = ({ laptop }) => {
 
   return (
     <Link to={`/product/${laptop.name}`}>
-    <div className="flex flex-col mt-4 bg-white h-[95%] w-full px-5 py-9 rounded-xl" onClick={handleopen}>
+    <div className="flex flex-col mt-4 bg-white h-[95%] w-72 px-5 py-9 rounded-xl" onClick={handleopen}>
       <div>
         <img className="h-52 rounded-xl transition-transform md:hover:scale-110" src={imageurl} alt={laptop.name} />
       </div>

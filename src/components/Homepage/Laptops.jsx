@@ -40,11 +40,10 @@ const Laptops = () => {
         </Link>
       </div>
 
-      <div className="md:grid grid-cols-4 grid-rows-1 gap-3 mt-1">
-        {/* loop over the filtred data up to 4  */}
+      <div className="flex overflow-x-auto gap-4 mt-1">
         {Array.isArray(laptopData?.data) &&
-          laptopData.data.slice(0, 4).map((laptop, index) => {
-            return <LaptopCard key={index} laptop={laptop} />;
+          laptopData.data.slice(0, 8).map((laptop, index) => {
+            return <LaptopCard key={index} laptop={laptop} flexShrink={0} />;
           })}
       </div>
     </div>
