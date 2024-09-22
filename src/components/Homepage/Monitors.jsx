@@ -41,7 +41,7 @@ const Monitors = () => {
   const viewall = () => {
     dispatch(fetchlaptop("Monitors"));
     dispatch(setcategory("Monitors"));
-    navigate("./laptops");
+    navigate("./category/Monitors");
   };
 
   return (

@@ -41,7 +41,7 @@ const Desktops = () => {
   const viewall = () => {
     dispatch(fetchlaptop("Desktop"));
     dispatch(setcategory("Desktops"));
-    navigate("./laptops");
+    navigate("./category/Desktops");
   };
 
   return (

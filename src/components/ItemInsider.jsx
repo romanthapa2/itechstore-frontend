@@ -12,7 +12,7 @@ const Iteminsider = () => {
   const laptoploadings = useSelector(laptopLoading);
   const laptperror = useSelector(laptopError);
   const laptopdtabyid = useSelector(laptopdataid);
-  console.log(laptopdtabyid);
+
 
   useEffect(() => {
     if (laptopdtabyid && laptopdtabyid?.data.img) {
@@ -53,7 +53,7 @@ const Iteminsider = () => {
           {imageurl && <img src={imageurl} alt="Laptop" className="w-full h-full p-14 " />}
         </div>
         {/* diplay  details of laptops*/}
-        <div className="bg-white  md:h-5/6 md:w-[40%] rounded-md">
+        <div className="bg-white  md:h-5/6 md:w-[40%] rounded-md overflow-y-auto">
           <div className="ml-11 mr-11">
             <h5 className="mt-12 font-light text-sm">HOME / PRODUCTS / LAPTOPS / LENOVO</h5>
             <h1 className="mt-4 text-2xl font-semibold">{laptopdtabyid && laptopdtabyid.data.name}</h1>
@@ -94,7 +94,7 @@ const Iteminsider = () => {
                 <span className="text-2xl font-semibold">{desc ? "-" : "+"}</span>
               </div>
               {desc && (
-                <div className="mr-10 mt-3">
+                <div className="mr-10 mt-3 ">
                   {/* Render description here */}
                   <p>{laptopdtabyid.data.desc}</p>
                 </div>

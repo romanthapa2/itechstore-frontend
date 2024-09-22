@@ -25,7 +25,7 @@ const Laptops = () => {
 
   // veiwall
   const viewall = () => {
-    navigate("./laptops");
+    navigate("./category/Laptops");
   };
 
   if (laptopLoadingStatus) {
