@@ -51,7 +51,7 @@ const Monitors = () => {
         </Link>
       </div>
 
-      <div className="flex overflow-x-auto gap-4 mt-1">
+      <div className="md:flex overflow-x-auto gap-4 mt-1">
         {Array.isArray(monitors) &&
           monitors.slice(0, 8).map((monitor, index) => {
             return <LaptopCard key={index} laptop={monitor} />;
