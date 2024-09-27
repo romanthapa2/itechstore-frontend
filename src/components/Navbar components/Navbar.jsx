@@ -45,7 +45,9 @@ const Navbar = () => {
 
       {/* search and add to cart icon */}
       <div className="flex flex-row">
-        <MemoizeFontAwesomeIcon icon={faMagnifyingGlass} className="mr-5 size-5" />
+        <Link to="/search">
+        <MemoizeFontAwesomeIcon icon={faMagnifyingGlass} className="mr-5 size-5 text-gray-600 hover:text-black" />
+        </Link>
         <Link to="/addtocart" className="relative">
           <MemoizeFontAwesomeIcon icon={faCartPlus} className="size-5" />
           <span className="absolute -right-4 -top-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">

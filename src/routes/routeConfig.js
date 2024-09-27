@@ -8,6 +8,7 @@ import Admin from "../components/admin/Admin";
 import Iteminsider from "../components/ItemInsider";
 import LaptopPage from "../components/LaptopPage";
 import CheckOutPage from "../components/checkout/CheckOutPage";
+import SearchPage from "../components/Navbar components/SearchPage";
 
 const routes = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const routes = createBrowserRouter([
       { path: "category/:type", element: <LaptopPage /> },
       { path: "brand/:type", element: <LaptopPage /> },
       { path: "checkout", element: <CheckOutPage /> },
+      {path:"search", element: <SearchPage />}
     ],
   },
 ]);

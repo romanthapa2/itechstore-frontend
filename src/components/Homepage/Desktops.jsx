@@ -16,7 +16,7 @@ const Desktops = () => {
   useEffect(() => {
     const fetchDesktop = async () => {
       try {
-        const response = await fetch(`${url}/api/filter/dataByType?type=Desktop`);
+        const response = await fetch(`${url}/api/filter/dataByFilter?type=Desktop`);
         const data = await response.json();
         setDesktops(data.data);
       } catch (error) {

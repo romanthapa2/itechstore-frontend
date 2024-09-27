@@ -16,9 +16,9 @@ export const fetchlaptop = createAsyncThunk(
     try {
       let response;
       if (type === "Laptop" || type === "Monitors" || type === "Desktop") {
-        response = await fetch(`${url}/api/filter/dataByType?type=${type}`);
+        response = await fetch(`${url}/api/filter/dataByFilter?type=${type}`);
       } else {
-        response = await fetch(`${url}/api/filter/dataByBrand?brand=${type}`);
+        response = await fetch(`${url}/api/filter/dataByFilter?brand=${type}`);
       }
       if (!response.ok) {
         throw new Error("Failed to fetch");

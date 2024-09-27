@@ -7,7 +7,7 @@ import Footermuni from "../components/footer components/FooterMuni";
 
 const Layout = () => {
   return (
-    <div>
+    <>
       <Navabarup/>
       <Navbar />
       <main>
@@ -15,7 +15,7 @@ const Layout = () => {
       </main>
       <Footer/>
       <Footermuni/>
-    </div>
+    </>
   );
 };
 
