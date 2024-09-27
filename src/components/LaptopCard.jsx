@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { url } from "../url";
 
 const LaptopCard = ({ laptop }) => {
+  console.log(laptop);
   const [imageurl, setimageurl] = useState("");
   const [isHovering, setIsHovering] = useState(false);
   const dispatch = useDispatch();
