@@ -1,14 +1,26 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import {url} from "../../url";
 
 const Loginhoi = () => {
   let history = useNavigate();
   const [value, setvalue] = useState({ email: "", password: "" });
+  // const [error,setError]= useState({ email :false, password:false });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // const newError = { email: false, password: false };
+    // if (value.email.length <= 5){
+    //   newError.email= true;
+    // }
+    // if (value.password.length <= 5){
+    //   newError.password= true;
+    // }
+    // setError(newError);
+
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/api/user/login`,
+      `${url}/api/user/login`,
       {
         method: "POST",
         headers: {
@@ -28,7 +40,8 @@ const Loginhoi = () => {
   };
   // sets the value when user types in the input form
   const onChange = (e) => {
-    setvalue({ ...value, [e.target.name]: e.target.value });
+    setvalue({ ...value, [e.target.id]: e.target.value });
+
   };
   return (
     <div className="h-[70vh] flex flex-col items-center bg-white">
@@ -44,9 +57,9 @@ const Loginhoi = () => {
         </h2>
       </div>
       <div className="mt-12 w-80 rounded-md flex flex-col justify-center items-center">
-        <form className=" w-96 space-y-3" onSubmit={handleSubmit}>
+        <form className=" w-96 space-y-5" onSubmit={handleSubmit}>
           <div className="relative">
-            <label className="absolute -top-2 left-3 px-1 bg-white text-sm text-black">
+            <label className={`absolute -top-2 left-3 px-1 bg-white text-sm text-black`}>
               Email<span className="text-red-600">*</span>
             </label>
             <input
@@ -54,12 +67,14 @@ const Loginhoi = () => {
               id="email"
               onChange={onChange}
               placeholder="email@example.com"
-              className={`border-2 border-gray-400  rounded-md px-4 py-2 focus:outline-none w-full`}
+              className={`border-2   rounded-md px-4 py-2 focus:outline-none w-full border-gray-400`}
+              required
+              minLength={6}
             />
           </div>
 
           <div className="relative">
-            <label className="absolute -top-2 left-3 px-1 bg-white text-sm text-gray-600">
+            <label className={`absolute -top-2 left-3 px-1 bg-white text-sm text-black`}>
               Password<span className="text-red-600">*</span>
             </label>
             <input
@@ -67,7 +82,9 @@ const Loginhoi = () => {
               id="password"
               onChange={onChange}
               placeholder="........"
-              className={`border-2 border-gray-400  rounded-md px-4 py-2 focus:outline-none w-full justify-center`}
+              className={`border-2 rounded-md px-4 py-2 focus:outline-none w-full justify-center border-gray-400`}
+              required
+              minLength={6}
             />
           </div>
 

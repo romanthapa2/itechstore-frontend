@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie"
+import { url } from "../../url";
 
 const Signup = () => {
   let history = useNavigate();
-  const [value, setvalue] = useState({ name: "", email: "", password: "" });
+  const [value, setvalue] = useState({email: "", password: "" });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, password } = value;
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/register`, {
+    const {email, password } = value;
+    console.log(url);
+    const response = await fetch(`${url}/api/user/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ email, password }),
     });
     const json = await response.json();
     if (json.success) {
@@ -25,53 +27,63 @@ const Signup = () => {
   };
 
   const onChange = (e) => {
-    setvalue({ ...value, [e.target.name]: e.target.value });
+    setvalue({ ...value, [e.target.id]: e.target.value });
   };
   return (
-    <div className="h-screen text-black flex justify-center flex-col items-center">
-
-      <div className="h-[55%] w-80 bg-white rounded-md flex flex-col justify-center items-center">
-      <h1 className="text-3xl mb-6">sign up</h1>
-        <form onSubmit={handleSubmit} className="w-60 space-y-4 ">
-          <div className="flex flex-col border ">
+    <div className="h-[70vh] flex flex-col items-center bg-white">
+      <div className="mt-6">
+        <img
+          src="/336681712_561790976019717_6382534753008597721_n-removebg-preview.png"
+          className="h-12 w-48 ml-8"
+          alt=""
+        />
+        <h1 className="mt-6 text-3xl font-semibold">Register your new account</h1>
+        <h2 className="ml-12 mt-2">
+          Or <span className="text-blue-800">login,if already have an account</span>
+        </h2>
+      </div>
+      <div className="mt-12 w-80 rounded-md flex flex-col justify-center items-center">
+        <form className=" w-96 space-y-5" onSubmit={handleSubmit}>
+          <div className="relative">
+            <label className="absolute -top-2 left-3 px-1 bg-white text-sm text-black">
+              Email<span className="text-red-600">*</span>
+            </label>
             <input
-              name="name"
-              type="text"
-              className="p-2"
-              placeholder="Username"
-              onChange={onChange}
-              minLength={5}
-              required
-            />
-          </div>
-          <div className="flex flex-col border">
-            <input
-              name="email"
               type="email"
-              className=" p-2"
-              placeholder="Email"
+              id="email"
               onChange={onChange}
-              minLength={5}
+              placeholder="email@example.com"
+              className={`border-2 border-gray-400  rounded-md px-4 py-2 focus:outline-none w-full`}
               required
+              minLength={6}
             />
           </div>
-          <div className="flex flex-col border">
+
+          <div className="relative">
+            <label className="absolute -top-2 left-3 px-1 bg-white text-sm text-gray-600">
+              Password<span className="text-red-600">*</span>
+            </label>
             <input
-              name="password"
               type="password"
-              className="p-2"
-              placeholder="Password"
+              id="password"
               onChange={onChange}
-              minLength={5}
-              required
+              placeholder="........"
+              className={`border-2 border-gray-400  rounded-md px-4 py-2 focus:outline-none w-full justify-center`}
+              minLength={6}
             />
           </div>
-          <button type="submit" className="p-2 w-28 text-white bg-black rounded-lg mt-3 ml-16">
-            SIGN UP
+
+          <button
+            type="submit"
+            className="p-2 w-full text-white bg-blue-950 rounded-lg"
+          >
+            SIGN IN
           </button>
         </form>
       </div>
     </div>
+
+
   );
 };
 
