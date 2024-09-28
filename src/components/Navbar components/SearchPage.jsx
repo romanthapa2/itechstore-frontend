@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { url } from "../../url";
 import LaptopCard from "../LaptopCard";
 
-const debounce = (func, delay) => {
+const debounce = (func, delay=500) => {
   let timeout;
   return (...args) => {
     clearTimeout(timeout);
@@ -16,6 +16,11 @@ const SearchPage = () => {
 
   const debouncedHandleOnChange = useCallback(
     debounce((searchText) => {
+      if (!searchText) {
+        setProducts([]);
+        return;
+      }
+
       const searchProduct = async () => {
         try {
           const response = await fetch(
@@ -28,8 +33,8 @@ const SearchPage = () => {
         }
       };
       searchProduct();
-    }, 500),
-    [url]
+    }),
+    []
   );
 
   const handleOnChange = (e) => {
@@ -52,8 +57,7 @@ const SearchPage = () => {
         {products.length > 0 ? (
           products.map((product) => (
             <LaptopCard key={product.id} laptop={product} />
-          )
-          )
+          ))
         ) : (
           <p className="text-center">Enter a search query to begin</p>
         )}

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { addToCart } from "../reduxstore/CartSlice";
 import { url } from "../url";
-// when some laptop is clicked this page is shown
+
 const Iteminsider = () => {
   const [imageurl, setimageurl] = useState("");
   const laptoploadings = useSelector(laptopLoading);
@@ -39,7 +39,7 @@ const Iteminsider = () => {
     dispatch(addToCart({ ...laptopdtabyid.data, quantity: no, totalPrice: laptopdtabyid.price }));
   };
 
-  // toggle desc when clicked it becomes true  another click false
+
   const [desc, setdesc] = useState(false);
   const handledesc = () => {
     setdesc(!desc);
