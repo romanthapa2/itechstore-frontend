@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie"
 import { url } from "../../url";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   let history = useNavigate();
   const [value, setvalue] = useState({email: "", password: "" });
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const {email, password } = value;
-    console.log(url);
+    try{
     const response = await fetch(`${url}/api/user/register`, {
       method: "POST",
       headers: {
@@ -18,11 +21,20 @@ const Signup = () => {
       body: JSON.stringify({ email, password }),
     });
     const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message || "Login failed");
+    }
+
     if (json.success) {
       Cookies.set("accessToken", json.data.accessToken);
       history("/");
     } else {
-      return <h1>error</h1>;
+      throw new Error("Invalid login credentials");
+    }}catch(error){
+      console.log(error?.message)
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -39,7 +51,7 @@ const Signup = () => {
         />
         <h1 className="mt-6 text-3xl font-semibold">Register your new account</h1>
         <h2 className="ml-12 mt-2">
-          Or <span className="text-blue-800">login,if already have an account</span>
+          Or <Link to={"/login"}><span className="text-blue-800">login,if already have an account</span></Link>
         </h2>
       </div>
       <div className="mt-12 w-80 rounded-md flex flex-col justify-center items-center">
@@ -76,8 +88,9 @@ const Signup = () => {
           <button
             type="submit"
             className="p-2 w-full text-white bg-blue-950 rounded-lg"
+            disabled={loading}
           >
-            SIGN IN
+            {loading ? "Signing in..." : "SIGN IN"}
           </button>
         </form>
       </div>
