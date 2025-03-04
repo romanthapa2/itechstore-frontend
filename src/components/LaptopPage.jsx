@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import LaptopCard from "./LaptopCard";
-import { laptopError, laptopLoading, laptopdata, category } from "../reduxstore/LaptopSlice";
+import { laptopError, laptopLoading, laptopDataByType, category } from "../reduxstore/LaptopSlice";
 
 const LaptopPage = () => {
   const laptopLoadingStatus = useSelector(laptopLoading);
   const laptopErrorStatus = useSelector(laptopError);
-  const laptopData = useSelector(laptopdata);
+  const laptopDataByTypes = useSelector(laptopDataByType);
   const setcategory = useSelector(category);
 
   if (laptopLoadingStatus) {
@@ -24,8 +24,8 @@ const LaptopPage = () => {
         </div>
 
         <div className="md:grid grid-cols-3 grid-rows-1 gap-2 mt-1">
-          {laptopData?.data &&
-            laptopData.data.map((laptop, index) => {
+          {laptopDataByTypes?.data &&
+            laptopDataByTypes.data.map((laptop, index) => {
               return <LaptopCard key={index} laptop={laptop} />;
             })}
         </div>

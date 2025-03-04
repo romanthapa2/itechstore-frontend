@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchlaptopbyid } from "../reduxstore/LaptopSlice";
+import { fetchlaptop, fetchlaptopbyid } from "../reduxstore/LaptopSlice";
 import { Link } from "react-router-dom";
 import { url } from "../url";
 
 const LaptopCard = ({ laptop }) => {
-  console.log(laptop);
   const [imageurl, setimageurl] = useState("");
   const [isHovering, setIsHovering] = useState(false);
   const dispatch = useDispatch();
@@ -29,6 +28,8 @@ const LaptopCard = ({ laptop }) => {
 
   const handleopen = (e) => {
     dispatch(fetchlaptopbyid(laptop._id));
+    dispatch(fetchlaptop({ filterType: "type", value: laptop.type }))
+    dispatch(fetchlaptop({ filterType: "brand", value: laptop.brand }))
   };
 
   const words = laptop.name.split(" ");

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import TypesIndex from "./categories/Index";
 import BrandsIndex from "./brands/index";
 import DispatchSelectedCategory from "./categories/DispatchSelectedCategory";
+import DispatchSelectedBrand from "./brands/DispatchSelectedBrand";
 import { useSelector } from "react-redux";
 import {cart } from "../../reduxstore/CartSlice"
 
@@ -74,7 +75,7 @@ const Navbar = () => {
               </div>
               <div className="mb-4">
                 <h1 className="text-2xl mb-2 font-semibold">Brands</h1>
-                <DispatchSelectedCategory />
+                <DispatchSelectedBrand />
               </div>
             </ul>
           </div>

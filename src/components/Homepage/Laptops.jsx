@@ -5,7 +5,7 @@ import {
   fetchlaptop,
   laptopError,
   laptopLoading,
-  laptopdata,
+  laptopDataByType,
   setcategory,
 } from "../../reduxstore/LaptopSlice";
 import { Link } from "react-router-dom";
@@ -15,10 +15,10 @@ const Laptops = () => {
   const laptopLoadingStatus = useSelector(laptopLoading);
   const laptopErrorStatus = useSelector(laptopError);
   // get the filtered data i.e laptop from slice
-  const laptopData = useSelector(laptopdata);
+  const laptopDataByTypes = useSelector(laptopDataByType);
 
   useEffect(() => {
-    dispatch(fetchlaptop("Laptop"));
+    dispatch(fetchlaptop({ filterType: "type", value: "Laptop" }));
     dispatch(setcategory("Laptop"));
   }, []);
 
@@ -41,8 +41,8 @@ const Laptops = () => {
       </div>
 
       <div className="md:flex overflow-x-auto gap-4 mt-1">
-        {Array.isArray(laptopData?.data) &&
-          laptopData.data.slice(0, 8).map((laptop, index) => {
+        {Array.isArray(laptopDataByTypes?.data) &&
+          laptopDataByTypes.data.slice(0, 8).map((laptop, index) => {
             return <LaptopCard key={index} laptop={laptop} flexShrink={0} />;
           })}
       </div>

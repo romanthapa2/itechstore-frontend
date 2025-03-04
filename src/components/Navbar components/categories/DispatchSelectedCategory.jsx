@@ -12,7 +12,7 @@ const DispatchSelectedCategory = () => {
   const dispatch = useDispatch();
 
   const Handletype = (data) => {
-    dispatch(fetchlaptop(data));
+    dispatch(fetchlaptop({ filterType: "type", value: data}));
     dispatch(setcategory(data));
   };
   return (

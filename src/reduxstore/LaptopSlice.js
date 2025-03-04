@@ -4,7 +4,9 @@ import { url } from "../url";
 const initialState = {
   loading: false,
   error: null,
-  laptopData: null,
+  // laptopData: null,
+  laptopDataByType: null,
+  laptopDataByBrand: null,
   laptopdatabyid: null,
   category: "",
 };
@@ -12,18 +14,18 @@ const initialState = {
 // fetching the filtred data of laptop in redux using asyncthunk
 export const fetchlaptop = createAsyncThunk(
   "get/fetchfilteredlaptop",
-  async (type) => {
+  async ({ filterType, value }) => {
     try {
       let response;
-      if (type === "Laptop" || type === "Monitors" || type === "Desktop") {
-        response = await fetch(`${url}/api/filter/dataByFilter?type=${type}`);
-      } else {
-        response = await fetch(`${url}/api/filter/dataByFilter?brand=${type}`);
+      if (filterType === "type") {
+        response = await fetch(`${url}/api/filter/dataByFilter?type=${value}`);
+      } else if (filterType === "brand") {
+        response = await fetch(`${url}/api/filter/dataByFilter?brand=${value}`);
       }
       if (!response.ok) {
         throw new Error("Failed to fetch");
       }
-      return await response.json();
+      return { filterType, data: await response.json() };
     } catch (error) {
       console.error("Error fetching laptop data:", error);
       throw error;
@@ -35,7 +37,7 @@ export const fetchlaptop = createAsyncThunk(
 export const fetchlaptopbyid = createAsyncThunk(
   `laptop/fetchlaptopbyid`,
   async (laptopid) => {
-    const response = await fetch(`${url}/api/filter/dataById/${laptopid}`);
+    const response = await fetch(`${url}/api/product/${laptopid}`);
     const data = await response.json();
     return data;
   }
@@ -66,7 +68,12 @@ export const Laptopslice = createSlice({
       .addCase(fetchlaptop.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.laptopData = action.payload;
+        const { filterType, data } = action.payload;
+        if (filterType === "type") {
+          state.laptopDataByType = data; // Store data fetched by type
+        } else if (filterType === "brand") {
+          state.laptopDataByBrand = data; // Store data fetched by brand
+        }
       })
       .addCase(fetchlaptop.rejected, (state, action) => {
         state.loading = false;
@@ -88,7 +95,8 @@ export const Laptopslice = createSlice({
   },
 });
 
-export const laptopdata = (state) => state.laptopslice.laptopData;
+export const laptopDataByType = (state) => state.laptopslice.laptopDataByType;
+export const laptopDataByBrand = (state) => state.laptopslice.laptopDataByBrand;
 export const laptopError = (state) => state.laptopslice.error;
 export const laptopLoading = (state) => state.laptopslice.loading;
 export const laptopdataid = (state) => state.laptopslice.laptopdatabyid;

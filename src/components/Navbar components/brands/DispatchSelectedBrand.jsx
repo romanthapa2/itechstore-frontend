@@ -15,7 +15,7 @@ const DispatchSelectedBrand = () => {
   const dispatch = useDispatch();
 
   const Handletype = (data) => {
-    dispatch(fetchlaptop(data));
+    dispatch(fetchlaptop({ filterType: "brand", value: data}));
     dispatch(setcategory(data));
   };
   return (
