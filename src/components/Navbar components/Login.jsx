@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { url } from "../../url";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Loginhoi = () => {
   let history = useNavigate();
   const [value, setvalue] = useState({ email: "", password: "" });
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  // const [error,setError]= useState({ email :false, password:false });
+
+
+  // Function to test toast notifications
+  const testToast = () => {
+    toast.success("This is a test success message");
+    setTimeout(() => {
+      toast.error("This is a test error message");
+    }, 1000);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +32,7 @@ const Loginhoi = () => {
     // setError(newError);
 
     try {
+      
       const response = await fetch(`${url}/api/user/login`, {
         method: "POST",
         headers: {
@@ -40,15 +49,13 @@ const Loginhoi = () => {
 
       if (json.success) {
         Cookies.set("accessToken", json.data.accessToken);
+        toast.success("Logged in successfully!");
         history("/");
       }
     } catch (error) {
-      console.log(error?.message)
-      setError(error?.message);
-      setTimeout(() => {
-        setError(null);
-      }, 5000);
-    }finally{
+      console.log(error?.message);
+      toast.error(error?.message || "Login failed. Please try again.");
+    } finally {
       setLoading(false);
     }
   };
@@ -59,6 +66,7 @@ const Loginhoi = () => {
   };
   return (
     <div className="h-[70vh] flex flex-col items-center bg-white">
+      
       <div className="mt-6">
         <img
           src="/336681712_561790976019717_6382534753008597721_n-removebg-preview.png"
@@ -117,11 +125,6 @@ const Loginhoi = () => {
           </button>
           </div>
         </form>
-      </div>
-      <div className="w-full ">
-      {error && (
-          <h1 className="float-right bg-red-700 p-2 mr-8 rounded-md">! {error}</h1>
-      )}
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie"
 import { url } from "../../url";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   let history = useNavigate();
@@ -13,6 +14,7 @@ const Signup = () => {
     setLoading(true);
     const {email, password } = value;
     try{
+    
     const response = await fetch(`${url}/api/user/register`, {
       method: "POST",
       headers: {
@@ -23,16 +25,18 @@ const Signup = () => {
     const json = await response.json();
 
     if (!response.ok) {
-      throw new Error(json.message || "Login failed");
+      throw new Error(json.message || "Registration failed");
     }
 
     if (json.success) {
+      toast.success("Registration successful!");
       Cookies.set("accessToken", json.data.accessToken);
       history("/");
     } else {
-      throw new Error("Invalid login credentials");
+      throw new Error("Invalid registration data");
     }}catch(error){
-      console.log(error?.message)
+      console.log(error?.message);
+      toast.error(error?.message || "Registration failed. Please try again.");
     }finally{
       setLoading(false);
     }
