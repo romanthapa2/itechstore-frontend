@@ -12,22 +12,22 @@ const Navabarup = () => {
 
 
   return (
-    <div className="flex h-8 px-6 items-center justify-between bg-black">
-      <div className="md:ml-10">
+    <div className="flex h-8 items-center justify-between bg-black container-padding">
+      <div>
         <Navbarupocurrency />
       </div>
       {/* signup and login component */}
       {!Cookies.get("accessToken") ? (
-        <div className=" text-white block text-xs md:mr-[25px]">
+        <div className="text-white block text-xs">
           <Link to="/signup" className="mx-4">
             Signup
           </Link>
-          <Link to="/login" className="md:mr-5">
+          <Link to="/login">
             Login
           </Link>
         </div>
       ) : (
-        <button onClick={handleLogout} className="text-white md:mr-10 text-sm">
+        <button onClick={handleLogout} className="text-white text-sm">
           Logout
         </button>
       )}

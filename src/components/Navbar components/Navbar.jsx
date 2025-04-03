@@ -27,8 +27,8 @@ const Navbar = () => {
   };
 
   return (
-    <header className="flex md:px-16 px-6 justify-between bg-white h-14 items-center">
-      <MemoizeFontAwesomeIcon icon={faBars} onClick={toggleSidebar} className="text-2xl md:ml-5 md:hidden" />
+    <header className="flex justify-between bg-white h-14 items-center container-padding">
+      <MemoizeFontAwesomeIcon icon={faBars} onClick={toggleSidebar} className="text-2xl md:hidden" />
       <div>
         <h1 className="font-semibold text-2xl">itechStore</h1>
       </div>

@@ -1,207 +1,361 @@
+import React from 'react';
+
 export default function CheckOutPage() {
+  const [activeStep, setActiveStep] = React.useState(0);
+  const steps = ["Contact Details", "Shipping Address", "Payment Method", "Review Order"];
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="mx-auto max-w-screen-xl px-4 py-8 lg:py-16 lg:px-6">
+    <section className="bg-gray-50 dark:bg-gray-900 py-12">
+      <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
         <div className="mx-auto max-w-screen-md">
-          <div className="rounded-lg bg-white shadow dark:bg-gray-800">
-            <div className="p-4 sm:p-8 lg:p-16">
-              <h2 className="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Checkout</h2>
-              <form action="#">
-                <div className="grid gap-4 lg:gap-6">
-                  <div className="space-y-4">
-                    <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Contact Details</h2>
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="rounded-lg bg-white shadow-lg dark:bg-gray-800 overflow-hidden">
+            {/* Stepper */}
+            <div className="bg-gray-100 dark:bg-gray-700 px-6 py-4 border-b border-gray-200 dark:border-gray-600">
+              <div className="flex justify-between items-center">
+                {steps.map((label, index) => (
+                  <div key={label} className="flex flex-col items-center">
+                    <div 
+                      className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium 
+                      ${activeStep >= index 
+                        ? 'bg-green-600 text-white' 
+                        : 'bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300'}`}
+                    >
+                      {index + 1}
+                    </div>
+                    <div className={`mt-2 text-xs sm:text-sm ${activeStep >= index ? 'text-green-600 font-medium' : 'text-gray-500'}`}>
+                      {label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-6 sm:p-8">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{steps[activeStep]}</h2>
+              
+              <form action="#" className="space-y-8">
+                {/* Step 1: Contact Details */}
+                {activeStep === 0 && (
+                  <div className="space-y-6">
+                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                       <div>
                         <label
                           htmlFor="first_name"
-                          className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                           First Name
                         </label>
                         <input
                           type="text"
                           id="first_name"
-                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                          placeholder="Ram"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                          placeholder="Enter your first name"
                           required
                         />
                       </div>
                       <div>
                         <label
                           htmlFor="last_name"
-                          className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                           Last Name
                         </label>
                         <input
                           type="text"
                           id="last_name"
-                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                          placeholder="Thapa"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                          placeholder="Enter your last name"
                           required
                         />
                       </div>
                       <div className="sm:col-span-2">
                         <label
                           htmlFor="email"
-                          className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                          Email
+                          className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
+                          Email Address
                         </label>
                         <input
                           type="email"
                           id="email"
-                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                          placeholder="example@example.com"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                          placeholder="you@example.com"
                           required
                         />
                       </div>
                       <div className="sm:col-span-2">
                         <label
                           htmlFor="phone"
-                          className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                           Phone Number
                         </label>
                         <div className="relative flex">
                           <button
-                            id="dropdown-phone-button-3"
-                            data-dropdown-toggle="dropdown-phone-3"
-                            className="flex-shrink-0 inline-flex items-center justify-center rounded-l-lg border border-gray-300 bg-gray-100 p-2.5 text-sm text-gray-900 hover:bg-gray-200 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
+                            id="dropdown-phone-button"
+                            data-dropdown-toggle="dropdown-phone"
+                            className="flex-shrink-0 inline-flex items-center rounded-l-lg border border-gray-300 bg-gray-100 p-2.5 text-sm text-gray-900 hover:bg-gray-200 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
                             type="button">
-                            <svg
-                              className="mr-2 h-4 w-4"
-                              aria-hidden="true"
-                              focusable="false"
-                              data-prefix="fas"
-                              data-icon="chevron-down"
-                              role="img"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 448 512">
-                              <path
-                                fill="currentColor"
-                                d="M207.029 381.471l194.343-194.343c9.373-9.373 9.373-24.569 0-33.941s-24.569-9.373-33.941 0L224 297.745 80.569 153.187c-9.373-9.373-24.569-9.373-33.941 0s-9.373 24.569 0 33.941l194.343 194.343c9.373 9.373 24.569 9.373 33.941 0z"></path>
-                            </svg>
-                            +977
+                            <span className="flex items-center">
+                              <span className="mr-2">+977</span>
+                              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                              </svg>
+                            </span>
                           </button>
-
                           <input
                             type="tel"
-                            id="phone-input-3"
-                            className="z-0 rounded-e-lg border border-l-0 border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                            placeholder="9812363849"
+                            id="phone-input"
+                            className="block w-full flex-1 rounded-r-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                            placeholder="9812345678"
+                            pattern="[0-9]{10}"
                             required
                           />
                         </div>
+                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">We'll send order updates to this number</p>
                       </div>
+                    </div>
+                  </div>
+                )}
 
+                {/* Step 2: Shipping Address */}
+                {activeStep === 1 && (
+                  <div className="space-y-6">
+                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                       <div>
                         <label
                           htmlFor="province"
-                          className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                           Province
                         </label>
-                        <input
-                          type="text"
+                        <select
                           id="province"
-                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                          placeholder="Province"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
                           required
-                        />
+                        >
+                          <option value="" disabled selected>Select province</option>
+                          <option value="province1">Province 1</option>
+                          <option value="province2">Province 2</option>
+                          <option value="province3">Bagmati</option>
+                          <option value="province4">Gandaki</option>
+                          <option value="province5">Lumbini</option>
+                          <option value="province6">Karnali</option>
+                          <option value="province7">Sudurpashchim</option>
+                        </select>
                       </div>
                       <div>
                         <label
                           htmlFor="city"
-                          className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                          className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                           City
                         </label>
                         <input
                           type="text"
                           id="city"
-                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                          placeholder="City"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                          placeholder="Enter city name"
                           required
                         />
                       </div>
                       <div>
                         <label
                           htmlFor="place"
-                          className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                          Place
+                          className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
+                          Area / Locality
                         </label>
                         <input
                           type="text"
                           id="place"
-                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                          placeholder="Place"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                          placeholder="Enter area or locality"
                           required
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="postal_code"
+                          className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
+                          Postal Code
+                        </label>
+                        <input
+                          type="text"
+                          id="postal_code"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                          placeholder="Enter postal code"
                         />
                       </div>
                       <div className="sm:col-span-2">
                         <label
-                          htmlFor="new_address"
-                          className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                          Add New Address
+                          htmlFor="street_address"
+                          className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
+                          Street Address
                         </label>
                         <input
                           type="text"
-                          id="new_address"
-                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                          placeholder="New Address"
+                          id="street_address"
+                          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                          placeholder="House no., Street, Landmark"
                           required
                         />
                       </div>
                     </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input
+                          id="save_address"
+                          type="checkbox"
+                          className="w-4 h-4 rounded border-gray-300 focus:ring-green-500 text-green-600"
+                        />
+                      </div>
+                      <label htmlFor="save_address" className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                        Save this address for future orders
+                      </label>
+                    </div>
                   </div>
+                )}
 
-                  <div className="space-y-4">
-                    <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Payment Method</h2>
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                      <div className="flex items-center">
-                        <input
-                          type="radio"
-                          id="credit_card"
-                          name="payment_method"
-                          className="form-radio h-4 w-4 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-800"
-                        />
-                        <label
-                          htmlFor="credit_card"
-                          className="ml-3 block text-sm font-medium text-gray-900 dark:text-white">
-                          Credit Card
+                {/* Step 3: Payment Method */}
+                {activeStep === 2 && (
+                  <div className="space-y-6">
+                    <div className="grid gap-6">
+                      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <label className="flex items-center p-4 cursor-pointer">
+                          <input
+                            type="radio"
+                            name="payment_method"
+                            value="cash_on_delivery"
+                            defaultChecked
+                            className="h-5 w-5 text-green-600 focus:ring-green-500"
+                          />
+                          <div className="ml-3 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                            </svg>
+                            <span className="font-medium text-gray-900 dark:text-white">Cash on Delivery</span>
+                          </div>
                         </label>
                       </div>
-                      <div className="flex items-center">
-                        <input
-                          type="radio"
-                          id="paypal"
-                          name="payment_method"
-                          className="form-radio h-4 w-4 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-800"
-                        />
-                        <label
-                          htmlFor="paypal"
-                          className="ml-3 block text-sm font-medium text-gray-900 dark:text-white">
-                          PayPal
+                      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <label className="flex items-center p-4 cursor-pointer">
+                          <input
+                            type="radio"
+                            name="payment_method"
+                            value="credit_card"
+                            className="h-5 w-5 text-green-600 focus:ring-green-500"
+                          />
+                          <div className="ml-3 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                            </svg>
+                            <span className="font-medium text-gray-900 dark:text-white">Credit Card</span>
+                          </div>
                         </label>
                       </div>
-                      <div className="flex items-center">
-                        <input
-                          type="radio"
-                          id="cash_on_delivery"
-                          name="payment_method"
-                          className="form-radio h-4 w-4 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-800"
-                        />
-                        <label
-                          htmlFor="cash_on_delivery"
-                          className="ml-3 block text-sm font-medium text-gray-900 dark:text-white">
-                          Cash on Delivery
+                      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <label className="flex items-center p-4 cursor-pointer">
+                          <input
+                            type="radio"
+                            name="payment_method"
+                            value="khalti"
+                            className="h-5 w-5 text-green-600 focus:ring-green-500"
+                          />
+                          <div className="ml-3 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                            <span className="font-medium text-gray-900 dark:text-white">Khalti</span>
+                          </div>
+                        </label>
+                      </div>
+                      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <label className="flex items-center p-4 cursor-pointer">
+                          <input
+                            type="radio"
+                            name="payment_method"
+                            value="esewa"
+                            className="h-5 w-5 text-green-600 focus:ring-green-500"
+                          />
+                          <div className="ml-3 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                            </svg>
+                            <span className="font-medium text-gray-900 dark:text-white">eSewa</span>
+                          </div>
                         </label>
                       </div>
                     </div>
                   </div>
+                )}
 
-                  <div className="flex items-center justify-between">
+                {/* Step 4: Review Order */}
+                {activeStep === 3 && (
+                  <div className="space-y-6">
+                    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                      <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-3">Order Summary</h3>
+                      <div className="space-y-3">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-500 dark:text-gray-400">Subtotal</span>
+                          <span className="font-medium text-gray-900 dark:text-white">Rs. 42,999</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-500 dark:text-gray-400">Shipping</span>
+                          <span className="font-medium text-gray-900 dark:text-white">Rs. 150</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-500 dark:text-gray-400">Tax</span>
+                          <span className="font-medium text-gray-900 dark:text-white">Rs. 499</span>
+                        </div>
+                        <div className="border-t border-gray-200 dark:border-gray-600 pt-3 mt-3">
+                          <div className="flex justify-between">
+                            <span className="font-semibold text-gray-900 dark:text-white">Total</span>
+                            <span className="font-semibold text-gray-900 dark:text-white">Rs. 43,648</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                      <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Shipping Information</h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">Ram Thapa</p>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">House #123, Kathmandu</p>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">Nepal, 44600</p>
+                    </div>
+                    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                      <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Payment Method</h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">Cash on Delivery</p>
+                    </div>
+                  </div>
+                )}
+
+                <div className="pt-4 flex justify-between border-t border-gray-200 dark:border-gray-700">
+                  {activeStep > 0 && (
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
+                      Back
+                    </button>
+                  )}
+                  {activeStep === 0 && (
+                    <div></div>
+                  )}
+                  {activeStep < steps.length - 1 ? (
+                    <button
+                      type="button"
+                      onClick={handleNext}
+                      className="rounded-lg bg-green-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-green-600 dark:hover:bg-green-700">
+                      Continue to {steps[activeStep + 1]}
+                    </button>
+                  ) : (
                     <button
                       type="submit"
-                      className="w-full rounded-lg bg-green-600 px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600 dark:focus:ring-primary-800">
+                      className="rounded-lg bg-green-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-green-600 dark:hover:bg-green-700">
                       Place Order
                     </button>
-                  </div>
+                  )}
                 </div>
               </form>
             </div>
