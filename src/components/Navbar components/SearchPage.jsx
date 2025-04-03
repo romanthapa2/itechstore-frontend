@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { url } from "../../url";
-import LaptopCard from "../LaptopCard";
+import LaptopCard, { SkeletonCard } from "../LaptopCard";
 
 const debounce = (func, delay=500) => {
   let timeout;
@@ -13,16 +13,19 @@ const debounce = (func, delay=500) => {
 const SearchPage = () => {
   const [value, setvalue] = useState("");
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const debouncedHandleOnChange = useCallback(
     debounce((searchText) => {
       if (!searchText) {
         setProducts([]);
+        setLoading(false);
         return;
       }
 
       const searchProduct = async () => {
         try {
+          setLoading(true);
           const response = await fetch(
             `${url}/api/filter/dataBySearch?search=${searchText}`
           );
@@ -30,6 +33,8 @@ const SearchPage = () => {
           setProducts(data.data);
         } catch (error) {
           console.error("Error fetching product data:", error);
+        } finally {
+          setLoading(false);
         }
       };
       searchProduct();
@@ -53,13 +58,16 @@ const SearchPage = () => {
           placeholder="Search through products"
         />
       </div>
-      <div className="h-fit grid grid-cols-3 bg-gray-300 mt-10 py-8 place-items-center">
-        {products.length > 0 ? (
+      <div className="h-fit grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-gray-300 mt-10 py-8 place-items-center">
+        {loading ? (
+          // Show skeleton loading while fetching results
+          Array(3).fill().map((_, index) => <SkeletonCard key={index} />)
+        ) : products.length > 0 ? (
           products.map((product) => (
             <LaptopCard key={product.id} laptop={product} />
           ))
         ) : (
-          <p className="text-center">Enter a search query to begin</p>
+          <p className="text-center col-span-full">Enter a search query to begin</p>
         )}
       </div>
     </div>

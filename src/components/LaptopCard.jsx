@@ -4,13 +4,31 @@ import { fetchlaptop, fetchlaptopbyid } from "../reduxstore/LaptopSlice";
 import { Link } from "react-router-dom";
 import { url } from "../url";
 
+// Skeleton component for loading state
+export const SkeletonCard = () => {
+  return (
+    <div className="flex flex-col mt-4 bg-white h-[95%] w-80 px-5 py-8 rounded-xl overflow-hidden">
+      <div>
+        <div className="h-52 rounded-xl bg-gray-200 animate-pulse-skeleton"></div>
+      </div>
+      <div className="mt-8 space-y-2">
+        <div className="h-5 w-24 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
+        <div className="h-5 w-48 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
+        <div className="h-5 w-20 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
+      </div>
+    </div>
+  );
+};
+
 const LaptopCard = ({ laptop }) => {
   const [imageurl, setimageurl] = useState("");
   const [isHovering, setIsHovering] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchImage = async () => {
+      setIsLoading(true);
       try {
         const imageurl = `${url}/${laptop.img}`;
         const response = await fetch(imageurl);
@@ -19,8 +37,10 @@ const LaptopCard = ({ laptop }) => {
           throw new Error("Failed to fetch image");
         }
         setimageurl(imageurl);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching image:", error);
+        setIsLoading(false);
       }
     };
     fetchImage();
@@ -35,6 +55,10 @@ const LaptopCard = ({ laptop }) => {
   const words = laptop.name.split(" ");
   const firstWord = words[0].toUpperCase();
   const restOfSentence = words.slice(1).join(" ");
+
+  if (isLoading) {
+    return <SkeletonCard />;
+  }
 
   return (
     <Link to={`/product/${laptop.name}`}>

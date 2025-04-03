@@ -10,8 +10,56 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { addToCart } from "../reduxstore/CartSlice";
-import LaptopCard from "./LaptopCard";
+import LaptopCard, { SkeletonCard } from "./LaptopCard";
 import { url } from "../url";
+
+// Skeleton components for loading states
+const SkeletonImageViewer = () => (
+  <div className="bg-white md:h-5/6 md:w-[48%] rounded-md p-14">
+    <div className="h-full w-full bg-gray-200 animate-pulse-skeleton rounded-xl"></div>
+  </div>
+);
+
+const SkeletonItemDetails = () => (
+  <div className="bg-white md:h-auto md:w-[48%] rounded-md overflow-y-auto">
+    <div className="ml-11 mr-11">
+      <div className="mt-12 h-5 w-72 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
+      <div className="mt-4 h-8 w-96 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
+      <div className="mt-4 h-6 w-36 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
+      <div className="flex flex-row-1 mt-5">
+        <div className="flex flex-row">
+          <div className="h-10 w-24 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
+        </div>
+        <div className="h-10 w-32 bg-gray-200 animate-pulse-skeleton rounded-md ml-6"></div>
+      </div>
+      <section className="mt-8">
+        <div className="flex flex-row justify-between mr-10 border-t-2 pt-1">
+          <div className="h-6 w-40 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
+          <div className="h-6 w-6 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
+        </div>
+        <div className="flex flex-row justify-between mr-10 mt-3 border-t-2 border-b-2 pb-2 pt-2">
+          <div className="h-6 w-28 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
+          <div className="h-6 w-6 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+);
+
+const SkeletonRelatedItems = () => (
+  <>
+    <div className="ml-12 w-fit">
+      <div className="h-7 w-48 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
+    </div>
+    <div className="mx-6 md:mx-10 md:pl-4 mb-10">
+      <div className="md:flex overflow-x-auto gap-4">
+        {[...Array(4)].map((_, index) => (
+          <SkeletonCard key={index} />
+        ))}
+      </div>
+    </div>
+  </>
+);
 
 const ImageViewer = ({ imageUrl }) => (
   <div className="bg-white md:h-5/6 md:w-[48%] rounded-md">
@@ -80,6 +128,7 @@ const Iteminsider = () => {
   const [imageurl, setimageurl] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [desc, setdesc] = useState(false);
+  const [isImageLoading, setIsImageLoading] = useState(true);
 
   const laptopLoadingState = useSelector(laptopLoading);
   const laptopErrorState = useSelector(laptopError);
@@ -91,14 +140,17 @@ const Iteminsider = () => {
   useEffect(() => {
     if (laptopById?.data.img) {
       const fetchImage = async () => {
+        setIsImageLoading(true);
         try {
           const imageUrl = `${url}/${laptopById.data.img}`;
           const response = await fetch(imageUrl);
           if (!response.ok) throw new Error("Failed to fetch image");
           setimageurl(imageUrl);
+          setIsImageLoading(false);
         } catch (error) {
           console.error("Error fetching image:", error);
-        setimageurl(""); // Reset image URL on error
+          setimageurl(""); // Reset image URL on error
+          setIsImageLoading(false);
         }
       };
       fetchImage();
@@ -111,7 +163,19 @@ const Iteminsider = () => {
 
   const handledesc = () => setdesc(!desc);
 
-  if (laptopLoadingState) return <div>Loading...</div>;
+  if (laptopLoadingState) {
+    return (
+      <div className="md:h-200vh">
+        <div className="bg-slate-200 flex flex-col md:flex-row md:justify-evenly md:p-10 p-5 gap-4">
+          <SkeletonImageViewer />
+          <SkeletonItemDetails />
+        </div>
+        <SkeletonRelatedItems />
+        <SkeletonRelatedItems />
+      </div>
+    );
+  }
+  
   if (laptopErrorState) return <div>Error: {laptopErrorState}</div>;
 
   const moreFromBrand = laptopDataByBrands?.data?.filter(
@@ -125,7 +189,11 @@ const Iteminsider = () => {
   return (
     <div className="md:h-200vh">
       <div className="bg-slate-200 flex flex-col md:flex-row md:justify-evenly md:p-10 p-5 gap-4">
-        <ImageViewer imageUrl={imageurl} />
+        {isImageLoading ? (
+          <SkeletonImageViewer />
+        ) : (
+          <ImageViewer imageUrl={imageurl} />
+        )}
         <ItemDetails
           laptop={laptopById.data}
           quantity={quantity}

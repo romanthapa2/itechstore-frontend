@@ -65,10 +65,15 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "pulse-skeleton": {
+          "0%, 100%": { opacity: 0.5 },
+          "50%": { opacity: 1 },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-skeleton": "pulse-skeleton 1.5s ease-in-out infinite",
       },
     },
   },
