@@ -69,7 +69,7 @@ const SearchPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-200 my-6">
-      <div className="w-3/4 mx-auto px-4 py-12">
+      <div className=" py-12">
         <div className="relative flex justify-center items-center">
           <div className="relative w-full max-w-2xl">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -98,13 +98,13 @@ const SearchPage = () => {
 
         <div className="mt-16">
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {Array(6).fill().map((_, index) => (
                 <SkeletonCard key={index} />
               ))}
             </div>
           ) : products.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-5">
               {products.map((product) => (
                 <LaptopCard key={product.id} laptop={product} />
               ))}

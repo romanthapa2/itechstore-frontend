@@ -65,7 +65,7 @@ const Loginhoi = () => {
     setvalue({ ...value, [e.target.id]: e.target.value });
   };
   return (
-    <div className="h-[70vh] flex flex-col items-center bg-white my-5">
+    <div className="h-screen flex flex-col items-center bg-white justify-center">
       
       <div className="mt-6">
         <img

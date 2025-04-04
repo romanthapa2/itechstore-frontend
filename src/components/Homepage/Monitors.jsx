@@ -35,7 +35,7 @@ const Monitors = () => {
   };
 
   return (
-    <div className="mx-6 md:mx-10 md:pl-4 mt-10 ">
+    <div className=" mt-10 ">
       <div className="flex justify-between">
         <h3 className="font-semibold text-xl">Monitors</h3>
         <Link className="mr-12 hover:underline text-blue-800" to={"/category/Monitors"} onClick={viewall}>

@@ -13,12 +13,12 @@ export default function CheckOutPage() {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 py-12">
-      <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
+    <section className="bg-gray-50 w-full h-fit p-4 dark:bg-gray-900 my-8">
+      <div className="mx-auto max-w-screen-xl px-content">
         <div className="mx-auto max-w-screen-md">
           <div className="rounded-lg bg-white shadow-lg dark:bg-gray-800 overflow-hidden">
             {/* Stepper */}
-            <div className="bg-gray-100 dark:bg-gray-700 px-6 py-4 border-b border-gray-200 dark:border-gray-600">
+            <div className="bg-gray-100 dark:bg-gray-700 px-content py-section-sm border-b border-gray-200 dark:border-gray-600">
               <div className="flex justify-between items-center">
                 {steps.map((label, index) => (
                   <div key={label} className="flex flex-col items-center">
@@ -38,7 +38,7 @@ export default function CheckOutPage() {
               </div>
             </div>
 
-            <div className="p-6 sm:p-8">
+            <div className="p-content">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{steps[activeStep]}</h2>
               
               <form action="#" className="space-y-8">

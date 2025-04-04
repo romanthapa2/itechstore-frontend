@@ -17,7 +17,7 @@ body {
 
 @layer components {
   .container-padding {
-    @apply px-4 md:px-12 lg:px-12;
+    @apply px-4 md:px-12 lg:px-60;
   }
 }
 

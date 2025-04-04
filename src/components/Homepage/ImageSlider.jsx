@@ -55,7 +55,7 @@ const Imageslider = () => {
   };
 
   return (
-    <div className="mx-6 md:mx-16  my-10">
+    <div className=" my-10">
       <div
         className="overflow-hidden rounded-3xl h-[490px] bg-gray-400 flex justify-center items-center
 "
