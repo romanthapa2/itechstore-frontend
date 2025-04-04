@@ -7,11 +7,11 @@ import { url } from "../url";
 // Skeleton component for loading state
 export const SkeletonCard = () => {
   return (
-    <div className="flex flex-col mt-4 bg-white h-[95%] w-80 px-5 py-8 rounded-xl overflow-hidden">
+    <div className="flex flex-col mt-4 bg-white h-[85%] w-64 px-4 py-6 rounded-xl overflow-hidden">
       <div>
-        <div className="h-52 rounded-xl bg-gray-200 animate-pulse-skeleton"></div>
+        <div className="h-40 rounded-xl bg-gray-200 animate-pulse-skeleton"></div>
       </div>
-      <div className="mt-8 space-y-2">
+      <div className="mt-6 space-y-2">
         <div className="h-5 w-24 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
         <div className="h-5 w-48 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
         <div className="h-5 w-20 bg-gray-200 animate-pulse-skeleton rounded-md"></div>
@@ -63,19 +63,19 @@ const LaptopCard = ({ laptop }) => {
   return (
     <Link to={`/product/${laptop.name}`}>
       <div
-        className="flex flex-col mt-4 bg-white h-[95%] w-80 px-5 py-8 rounded-xl overflow-hidden"
+        className="flex flex-col mt-4 bg-white h-fit w-64 px-4 py-6 rounded-xl overflow-hidden"
         onClick={handleopen}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
         <div>
           <img
-            className="h-52 rounded-xl transition-transform md:hover:scale-110"
+            className="h-40 rounded-xl transition-transform md:hover:scale-110"
             src={imageurl}
             alt={laptop.name}
           />
         </div>
-        <div className="mt-8 space-y-2">
+        <div className="mt-6 space-y-2">
           <h1 className="text-slate-600 font-semibold">{firstWord}</h1>
           <h2
             className={`text-nowrap ${

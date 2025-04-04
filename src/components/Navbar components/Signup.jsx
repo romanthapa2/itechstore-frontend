@@ -46,7 +46,7 @@ const Signup = () => {
     setvalue({ ...value, [e.target.id]: e.target.value });
   };
   return (
-    <div className="h-[70vh] flex flex-col items-center bg-white">
+    <div className="h-[70vh] flex flex-col items-center bg-white my-5">
       <div className="mt-6">
         <img
           src="/336681712_561790976019717_6382534753008597721_n-removebg-preview.png"
